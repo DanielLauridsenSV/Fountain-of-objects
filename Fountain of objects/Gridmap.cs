@@ -74,10 +74,9 @@ namespace Fountain_of_objects
             {      
                 for (int j = 0; j < seconddimention; j++)
                  {
-
                     if (grid[i, j].Isrevealed == true)
                     {
-                        Console.Write($"{grid[i,j].message,-12}|");
+                            Console.Write($"{grid[i, j].message,-12}|");   
                     }
                     else
                     {

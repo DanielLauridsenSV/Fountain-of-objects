@@ -13,37 +13,67 @@ namespace Fountain_of_objects
 
         public void Chosedirection()
         {
-   
+            bool possiblemove = false;
             Console.WriteLine(" choose your path with the arrowkeys");
-            ConsoleKey movement = Console.ReadKey().Key;
-            switch (movement)
+            while (possiblemove == false)
             {
-                case ConsoleKey.UpArrow:
-                    {
-                        PlacementUD--;
-                        break;
-                    }
-                case ConsoleKey.DownArrow:
-                    {
-                        PlacementUD++;
-                        break;
-                    }
-                case ConsoleKey.LeftArrow:
-                    {
-                        PlacementRL--;
-                        break;
-                    }
-                case ConsoleKey.RightArrow:
-                    {
-                        PlacementRL++;
-                        break;
-                    }
-                default:
-                    {
-                        Console.WriteLine(" you did not not press a valid key, try again");
-                        Chosedirection();
-                        break;
-                    }
+                ConsoleKey movement = Console.ReadKey().Key;
+                switch (movement)
+                {
+                    case ConsoleKey.UpArrow:
+                        {
+                            if (PlacementUD - 1 >= 0)
+                            {
+                                PlacementUD--;
+                                possiblemove = true;
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine(" you did not not press a valid key, try again");
+                                break;
+                            }
+                        }
+                    case ConsoleKey.DownArrow:
+                        {
+                            if (PlacementUD + 1 <= 2)
+                            {
+                                PlacementUD++;
+                                possiblemove = true;
+                                break;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                    case ConsoleKey.LeftArrow:
+                        {
+                            if (PlacementRL - 1 >= 0)
+                            {
+                                PlacementRL--;
+                                possiblemove = true;
+                                break;
+                            }
+                            else
+                            {
+                                break; 
+                            }
+                        }
+                    case ConsoleKey.RightArrow:
+                        {
+                            if (PlacementRL + 1 <= 2)
+                            {
+                                PlacementRL++;
+                                possiblemove = true;
+                                break;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                }
             }
         }
 
