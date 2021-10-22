@@ -52,7 +52,7 @@ namespace Fountain_of_objects
                 grid[dimension1, dimension2] = (Room)Activator.CreateInstance(eventype);
             }
         }
-        public void Visualizemap(List<playerturn> logs)
+        public void Visualizemap(List<playerturn> logs,playerturn location)
         {
             for (int i = 0; i < logs.Count; i++)
             {
@@ -69,7 +69,19 @@ namespace Fountain_of_objects
                  {
                     if (grid[i, j].Isrevealed == true)
                     {
-                            Console.Write($"{grid[i, j].message,-12}|");   
+                        if (location.updown ==i && location.rightleft ==j)
+                        {
+                            Console.BackgroundColor = ConsoleColor.DarkBlue;
+                            Console.Write($"{grid[i, j].message,-12}");
+                            Console.BackgroundColor = ConsoleColor.Black;
+                            Console.Write("|");
+                        }
+                        else
+                        {
+                            Console.Write($"{grid[i, j].message,-12}|");
+                        }
+                         
+                       
                     }
                     else
                     {

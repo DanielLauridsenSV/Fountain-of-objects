@@ -8,12 +8,12 @@ namespace Fountain_of_objects
         static void Main(string[] args)
         {
             Player player = new();
-            Gridmap map = new(player.Logger[player.Logger.Count -1]) ;
+            Gridmap map = new(player.location) ;
 
             while (true)
             {
                 player.DisplayPosition();
-                map.Visualizemap(player.Logger);
+                map.Visualizemap(player.Logger,player.location);
                 player.Chosedirection();
                 Console.Clear();
             }
