@@ -8,8 +8,8 @@ namespace Fountain_of_objects
 {
     public class Player
     {
-       public int PlacementUD { get; set; } = 2;
-       public int PlacementRL { get; set; } = 1;
+       public int PlacementUD { get; set; } = 4;
+       public int PlacementRL { get; set; } = 2;
 
         public void Chosedirection()
         {
@@ -36,7 +36,7 @@ namespace Fountain_of_objects
                         }
                     case ConsoleKey.DownArrow:
                         {
-                            if (PlacementUD + 1 <= 2)
+                            if (PlacementUD + 1 <= 4)
                             {
                                 PlacementUD++;
                                 possiblemove = true;
@@ -62,7 +62,7 @@ namespace Fountain_of_objects
                         }
                     case ConsoleKey.RightArrow:
                         {
-                            if (PlacementRL + 1 <= 2)
+                            if (PlacementRL + 1 <= 4)
                             {
                                 PlacementRL++;
                                 possiblemove = true;

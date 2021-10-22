@@ -10,12 +10,12 @@ namespace Fountain_of_objects
     public class Gridmap
     {
         public Room[,] grid { get; }
-        public int downup { get; set; } = 3;
-        private int rigthtleft { get; set; } = 3;
-        int holes { get; set; } = 3;
+        public int downup { get; set; } = 5;
+        private int rigthtleft { get; set; } = 5;
+        int holes { get; set; } = 7;
         Random rand = new();
      
-        public Gridmap()
+        public Gridmap(playerturn logs)
         {
             grid = new Room[downup, rigthtleft];
             for (int i = 0; i < grid.GetLength(0); i++)
@@ -25,13 +25,13 @@ namespace Fountain_of_objects
                     grid[i, j] = new Room();
                 }
             }
-            CreateEntrypoint();
+            CreateEntrypoint(logs);
             placeFountain();
             placeHoles(holes);
         }
-        private void CreateEntrypoint()
+        private void CreateEntrypoint(playerturn firstturn)
         {
-            grid[2, 1] = new Entryroom();
+            grid[firstturn.updown,firstturn.rightleft] = new Entryroom();
         }
         private void placeHoles(int holes)
         {
@@ -41,8 +41,8 @@ namespace Fountain_of_objects
             {
                 while (grid[dimension1, dimension2].isoccupied)
                 {
-                    dimension1 = rand.Next(0, 3);
-                    dimension2 = rand.Next(0, 3);
+                    dimension1 = rand.Next(0, 5);
+                    dimension2 = rand.Next(0, 5);
 
                 }
                 grid[dimension1, dimension2] = new Hole();
@@ -50,12 +50,12 @@ namespace Fountain_of_objects
         }
         private void placeFountain()
         {
-            int dimension1 = rand.Next(0, 3);
-            int dimension2 = rand.Next(0, 3);
+            int dimension1 = rand.Next(0, 5);
+            int dimension2 = rand.Next(0, 5);
             while (grid[ dimension1, dimension2].isoccupied)
             {
-                dimension1 = rand.Next(0, 3);
-                dimension2 = rand.Next(0, 3);
+                dimension1 = rand.Next(0, 5);
+                dimension2 = rand.Next(0, 5);
             }
             grid[dimension1, dimension2] = new Fountain();
         }
@@ -69,7 +69,7 @@ namespace Fountain_of_objects
         
             int firstdimention = grid.GetLength(0);
             int seconddimention = grid.GetLength(1);
-            Console.Write($"{"_______________________________________"}\n");
+            Console.Write($"{"_________________________________________________________________"}\n");
             for (int i = 0; i < firstdimention; i++)
             {      
                 for (int j = 0; j < seconddimention; j++)
@@ -84,7 +84,7 @@ namespace Fountain_of_objects
                     }
 
                 }
-                Console.Write($"\n{"_______________________________________"}\n");
+                Console.Write($"\n{"_________________________________________________________________"}\n");
             }
         }
         public void enterRoom(Player player)
