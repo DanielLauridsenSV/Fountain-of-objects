@@ -8,9 +8,18 @@ namespace Fountain_of_objects
 {
     public class Player
     {
-       public int PlacementUD { get; set; } = 4;
-       public int PlacementRL { get; set; } = 2;
-
+        public playerturn location;
+        public  List<playerturn> Logger { get; set; }
+        public Player()
+        {
+            location = new(4, 2);
+            Logger = new();
+            Logger.Add(location);
+        }
+        public void DisplayPosition()
+        {
+            Console.WriteLine($"you are currently at {location.updown+1} from the top and {location.rightleft+1} from the left");
+        }
         public void Chosedirection()
         {
             bool possiblemove = false;
@@ -22,9 +31,10 @@ namespace Fountain_of_objects
                 {
                     case ConsoleKey.UpArrow:
                         {
-                            if (PlacementUD - 1 >= 0)
+                            if (location.updown- 1 >= 0)
                             {
-                                PlacementUD--;
+                                location.updown = location.updown --;
+                                Logger.Add(location);
                                 possiblemove = true;
                                 break;
                             }
@@ -36,40 +46,46 @@ namespace Fountain_of_objects
                         }
                     case ConsoleKey.DownArrow:
                         {
-                            if (PlacementUD + 1 <= 4)
+                            if (location.updown + 1 <= 4)
                             {
-                                PlacementUD++;
+                                location.updown = location.updown ++;
+                                Logger.Add(location);
                                 possiblemove = true;
                                 break;
                             }
                             else
                             {
+                                Console.WriteLine(" you did not not press a valid key, try again");
                                 break;
                             }
                         }
                     case ConsoleKey.LeftArrow:
                         {
-                            if (PlacementRL - 1 >= 0)
+                            if (location.rightleft - 1 >= 0)
                             {
-                                PlacementRL--;
+                                location.rightleft = location.rightleft --;
+                                Logger.Add(location);
                                 possiblemove = true;
                                 break;
                             }
                             else
                             {
-                                break; 
+                                Console.WriteLine(" you did not not press a valid key, try again");
+                                break;
                             }
                         }
                     case ConsoleKey.RightArrow:
                         {
-                            if (PlacementRL + 1 <= 4)
+                            if (location.rightleft + 1 <= 4)
                             {
-                                PlacementRL++;
+                                location.rightleft = location.rightleft++;
+                                Logger.Add(location);
                                 possiblemove = true;
                                 break;
                             }
                             else
                             {
+                                Console.WriteLine(" you did not not press a valid key, try again");
                                 break;
                             }
                         }

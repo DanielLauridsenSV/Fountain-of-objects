@@ -9,55 +9,48 @@ namespace Fountain_of_objects
 
     public class Gridmap
     {
-        public Room[,] grid { get; }
-        public int downup { get; set; } = 5;
-        private int rigthtleft { get; set; } = 5;
-        int holes { get; set; } = 7;
+        public Room[,] grid { get; set; }
+        public int Height { get; set; } = 5;
+        private int Width { get; set; } = 5;
+        int NumberOfHoles { get; set; } = 7;
+        int NumberOfFountains { get; set; } = 1;
         Random rand = new();
      
         public Gridmap(playerturn logs)
         {
-            grid = new Room[downup, rigthtleft];
-            for (int i = 0; i < grid.GetLength(0); i++)
+            CreateGrid();
+            CreateEntrypoint(logs);
+            placement(typeof(Fountain) , NumberOfFountains);
+            placement(typeof(Hole), NumberOfHoles);
+        }
+        private void CreateGrid()
+        {
+            grid = new Room[Height, Width];
+            for (int i = 0; i < Height; i++)
             {
-                for (int j = 0; j < grid.GetLength(1); j++)
+                for (int j = 0; j < Width; j++)
                 {
                     grid[i, j] = new Room();
                 }
             }
-            CreateEntrypoint(logs);
-            placeFountain();
-            placeHoles(holes);
         }
         private void CreateEntrypoint(playerturn firstturn)
         {
             grid[firstturn.updown,firstturn.rightleft] = new Entryroom();
         }
-        private void placeHoles(int holes)
+        private void placement(Type eventype,int amount)
         {
-            int dimension1 = rand.Next(0, 3);
-            int dimension2 = rand.Next(0, 3);
-            for (int i = 0; i < holes; i++)
+            int dimension1 = rand.Next(0, 5);
+            int dimension2 = rand.Next(0, 5);
+            for (int i = 0; i < amount; i++)
             {
                 while (grid[dimension1, dimension2].isoccupied)
                 {
                     dimension1 = rand.Next(0, 5);
                     dimension2 = rand.Next(0, 5);
-
                 }
-                grid[dimension1, dimension2] = new Hole();
+                grid[dimension1, dimension2] = (Room)Activator.CreateInstance(eventype);
             }
-        }
-        private void placeFountain()
-        {
-            int dimension1 = rand.Next(0, 5);
-            int dimension2 = rand.Next(0, 5);
-            while (grid[ dimension1, dimension2].isoccupied)
-            {
-                dimension1 = rand.Next(0, 5);
-                dimension2 = rand.Next(0, 5);
-            }
-            grid[dimension1, dimension2] = new Fountain();
         }
         public void Visualizemap(List<playerturn> logs)
         {
@@ -89,7 +82,7 @@ namespace Fountain_of_objects
         }
         public void enterRoom(Player player)
         {
-            grid[player.PlacementRL, player.PlacementUD].Isrevealed = true;
+            grid[player.Logger.Last().rightleft, player.Logger.Last().updown].Isrevealed = true;
         }
 
     }
