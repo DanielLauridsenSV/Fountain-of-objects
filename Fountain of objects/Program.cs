@@ -13,7 +13,7 @@ namespace Fountain_of_objects
             while (true)
             {
                 player.DisplayPosition();
-                map.Visualizemap(player.Logger,player.location);
+                map.Visualizemap(player.Logger);
                 player.Chosedirection();
                 Console.Clear();
             }

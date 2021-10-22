@@ -8,7 +8,7 @@ namespace Fountain_of_objects
 {
     public class Room
     {
-        public string message = "message";
+        public string message = "An empty room";
         public bool isoccupied = false;
         public bool Isrevealed = false;
     }

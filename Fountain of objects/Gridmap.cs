@@ -52,44 +52,46 @@ namespace Fountain_of_objects
                 grid[dimension1, dimension2] = (Room)Activator.CreateInstance(eventype);
             }
         }
-        public void Visualizemap(List<playerturn> logs,playerturn location)
+        public void Visualizemap(List<playerturn> logs)
         {
-            for (int i = 0; i < logs.Count; i++)
-            {
-                grid[logs[i].updown, logs[i].rightleft].Isrevealed = true;
-            }
-        
-        
-            int firstdimention = grid.GetLength(0);
-            int seconddimention = grid.GetLength(1);
-            Console.Write($"{"_________________________________________________________________"}\n");
-            for (int i = 0; i < firstdimention; i++)
+            playerturn currentposition = logs.Last();
+            Isvisible(logs);
+
+            Console.Write($"{"______________________________________________________________________"}\n");
+            for (int i = 0; i < Height; i++)
             {      
-                for (int j = 0; j < seconddimention; j++)
+                for (int j = 0; j < Width; j++)
                  {
                     if (grid[i, j].Isrevealed == true)
                     {
-                        if (location.updown ==i && location.rightleft ==j)
+                        if (currentposition.updown ==i && currentposition.rightleft ==j)
                         {
                             Console.BackgroundColor = ConsoleColor.DarkBlue;
-                            Console.Write($"{grid[i, j].message,-12}");
+                            Console.Write($"{grid[i, j].message,-13}");
                             Console.BackgroundColor = ConsoleColor.Black;
                             Console.Write("|");
                         }
                         else
                         {
-                            Console.Write($"{grid[i, j].message,-12}|");
+                            Console.Write($"{grid[i, j].message,-13}|");
                         }
                          
                        
                     }
                     else
                     {
-                        Console.Write($"{"",-12}|");
+                        Console.Write($"{"",-13}|");
                     }
 
                 }
-                Console.Write($"\n{"_________________________________________________________________"}\n");
+                Console.Write($"\n{"______________________________________________________________________"}\n");
+            }
+        }
+        public void Isvisible(List<playerturn> logs)
+        {
+            for (int i = 0; i < logs.Count; i++)
+            {
+                grid[logs[i].updown, logs[i].rightleft].Isrevealed = true;
             }
         }
         public void enterRoom(Player player)
