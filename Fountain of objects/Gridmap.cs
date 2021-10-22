@@ -12,7 +12,7 @@ namespace Fountain_of_objects
         public Room[,] grid { get; }
         public int downup { get; set; } = 3;
         private int rigthtleft { get; set; } = 3;
-        int holes { get; set; }
+        int holes { get; set; } = 3;
         Random rand = new();
      
         public Gridmap()
