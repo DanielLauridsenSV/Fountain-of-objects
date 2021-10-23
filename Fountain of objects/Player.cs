@@ -8,11 +8,13 @@ namespace Fountain_of_objects
 {
     public class Player
     {
+        public playerposition startingposition { get; init; }
         public playerposition location { get; set; }
         public  List<playerposition> Logger { get; set; }
         public Player()
         {
-            location = new(4, 2);
+            startingposition = new (4, 2);
+            location = startingposition;
             Logger = new();
             Logger.Add(location);
         }

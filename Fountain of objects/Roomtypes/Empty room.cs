@@ -15,6 +15,11 @@ namespace Fountain_of_objects
                 Isrevealed = false;
             }
 
+        public override void Enterroom()
+        {
+            Console.WriteLine("this is an empty room, there is nothing here of interest");
+        }
+
         //public override void RoomActivation()
         //{
         //    throw new NotImplementedException();

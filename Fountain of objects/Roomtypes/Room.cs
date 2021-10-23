@@ -11,8 +11,9 @@ namespace Fountain_of_objects
         public string message;
         public bool isoccupied = false;
         public bool Isrevealed = false;
+        public bool fountainactivated = false;
 
-        //public abstract void RoomActivation();
+        public abstract void Enterroom();
      
     }
 }
