@@ -15,7 +15,7 @@ namespace Fountain_of_objects
                 player.DisplayPosition();
                 map.Visualizemap(player.Logger);
                 player.Chosedirection();
-                Map
+                map.grid[player.location.updown, player.location.rightleft].RoomActivation();
                 Console.Clear();
             }
 

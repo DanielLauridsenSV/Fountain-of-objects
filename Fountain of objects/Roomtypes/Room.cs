@@ -13,6 +13,6 @@ namespace Fountain_of_objects
         public bool Isrevealed = false;
 
         public abstract void RoomActivation();
-        public 
+     
     }
 }

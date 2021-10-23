@@ -30,7 +30,7 @@ namespace Fountain_of_objects
             {
                 for (int j = 0; j < Width; j++)
                 {
-                    grid[i, j] = new Room();
+                    grid[i, j] = new Empty_Room();
                 }
             }
         }

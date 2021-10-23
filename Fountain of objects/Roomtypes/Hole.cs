@@ -8,11 +8,16 @@ namespace Fountain_of_objects
 {
     public class Hole : Room
     {
-        bool fall = true;
+        bool fall = false;
         public Hole()
         {
             message = "hole";
             isoccupied = true;
+        }
+
+        public override void RoomActivation()
+        {
+            fall = true;
         }
     }
 }

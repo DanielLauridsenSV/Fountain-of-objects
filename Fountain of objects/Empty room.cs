@@ -15,6 +15,10 @@ namespace Fountain_of_objects
                 Isrevealed = true;
             }
 
+        public override void RoomActivation()
+        {
+            throw new NotImplementedException();
         }
     }
-}
+    }
+

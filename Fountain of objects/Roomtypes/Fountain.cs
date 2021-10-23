@@ -22,6 +22,10 @@ namespace Fountain_of_objects
             {
                 Win = true;
             }
+            else
+            {
+                Console.WriteLine("you leave the button unklicked and continue to another Room");
+            }
         }
     }
 }
