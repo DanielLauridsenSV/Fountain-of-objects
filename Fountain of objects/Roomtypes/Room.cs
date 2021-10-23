@@ -12,7 +12,7 @@ namespace Fountain_of_objects
         public bool isoccupied = false;
         public bool Isrevealed = false;
 
-        public abstract void RoomActivation();
+        //public abstract void RoomActivation();
      
     }
 }

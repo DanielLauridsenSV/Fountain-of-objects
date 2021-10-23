@@ -11,14 +11,14 @@ namespace Fountain_of_objects
             public Empty_Room()
             {
                 message = "An empty room";
-                isoccupied = true;
-                Isrevealed = true;
+                isoccupied = false;
+                Isrevealed = false;
             }
 
-        public override void RoomActivation()
-        {
-            throw new NotImplementedException();
-        }
+        //public override void RoomActivation()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
     }
 

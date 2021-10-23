@@ -15,9 +15,9 @@ namespace Fountain_of_objects
             isoccupied = true;
         }
 
-        public override void RoomActivation()
-        {
-            fall = true;
-        }
+        //public override void RoomActivation()
+        //{
+        //    fall = true;
+        //}
     }
 }

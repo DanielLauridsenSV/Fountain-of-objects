@@ -8,8 +8,8 @@ namespace Fountain_of_objects
 {
     public class Player
     {
-        public playerturn location { get; set; }
-        public  List<playerturn> Logger { get; set; }
+        public playerposition location { get; set; }
+        public  List<playerposition> Logger { get; set; }
         public Player()
         {
             location = new(4, 2);
@@ -34,7 +34,7 @@ namespace Fountain_of_objects
                             if (location.updown- 1 >= 0)
                             {
                                 location.updown = location.updown -1;
-                                Logger.Add(new playerturn(location));
+                                Logger.Add(new playerposition(location));
                                 possiblemove = true;
                                 break;
                             }
@@ -49,7 +49,7 @@ namespace Fountain_of_objects
                             if (location.updown + 1 <= 4)
                             {
                                 location.updown = location.updown +1;
-                                Logger.Add( new playerturn(location));
+                                Logger.Add( new playerposition(location));
                                 possiblemove = true;
                                 break;
                             }
@@ -64,7 +64,7 @@ namespace Fountain_of_objects
                             if (location.rightleft - 1 >= 0)
                             {
                                 location.rightleft = location.rightleft -1;
-                                Logger.Add(new playerturn(location));
+                                Logger.Add(new playerposition(location));
                                 possiblemove = true;
                                 break;
                             }
@@ -79,7 +79,7 @@ namespace Fountain_of_objects
                             if (location.rightleft + 1 <= 4)
                             {
                                 location.rightleft = location.rightleft+1;
-                                Logger.Add(new playerturn(location));
+                                Logger.Add(new playerposition(location));
                                 possiblemove = true;
                                 break;
                             }

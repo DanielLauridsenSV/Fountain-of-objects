@@ -16,10 +16,10 @@ namespace Fountain_of_objects
         int NumberOfFountains { get; set; } = 1;
         Random rand = new();
      
-        public Gridmap(playerturn logs)
+        public Gridmap(playerposition Firstposition)
         {
             CreateGrid();
-            CreateEntrypoint(logs);
+            CreateEntrypoint(Firstposition);
             placement(typeof(Fountain) , NumberOfFountains);
             placement(typeof(Hole), NumberOfHoles);
         }
@@ -34,7 +34,7 @@ namespace Fountain_of_objects
                 }
             }
         }
-        private void CreateEntrypoint(playerturn firstturn)
+        private void CreateEntrypoint(playerposition firstturn)
         {
             grid[firstturn.updown,firstturn.rightleft] = new Entryroom();
         }
@@ -52,10 +52,10 @@ namespace Fountain_of_objects
                 grid[dimension1, dimension2] = (Room)Activator.CreateInstance(eventype);
             }
         }
-        public void Visualizemap(List<playerturn> logs)
+        public void Visualizemap(List<playerposition> logs)
         {
-            playerturn currentposition = logs.Last();
-            Isvisible(logs);
+            playerposition currentposition = logs.Last();
+            Isvisible(currentposition);
 
             Console.Write($"{"______________________________________________________________________"}\n");
             for (int i = 0; i < Height; i++)
@@ -87,18 +87,10 @@ namespace Fountain_of_objects
                 Console.Write($"\n{"______________________________________________________________________"}\n");
             }
         }
-        public void Isvisible(List<playerturn> logs)
+        public void Isvisible(playerposition position)
         {
-            for (int i = 0; i < logs.Count; i++)
-            {
-                grid[logs[i].updown, logs[i].rightleft].Isrevealed = true;
-            }
+                grid[position.updown, position.rightleft].Isrevealed = true;   
         }
-        public void enterRoom(Player player)
-        {
-            grid[player.Logger.Last().rightleft, player.Logger.Last().updown].Isrevealed = true;
-        }
-
     }
 }
 

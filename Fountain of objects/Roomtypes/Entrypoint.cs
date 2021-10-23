@@ -14,9 +14,10 @@ namespace Fountain_of_objects
             isoccupied = true;
             Isrevealed = true;
         }
-        public override void RoomActivation()
-        {
-            Console.WriteLine("you are near the labyrints entrypoint and you can feel the cool breeze from the enterance;");
-        }
+        //public override bool RoomActivation(out string message)
+        //{
+        //    Console.WriteLine("you are near the labyrints entrypoint and you can feel the cool breeze from the enterance;");
+        //    return
+        //}
     }
 }
