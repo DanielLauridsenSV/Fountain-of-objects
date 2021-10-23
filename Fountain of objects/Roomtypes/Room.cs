@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace Fountain_of_objects
 {
-    public class Room
+    public abstract class Room
     {
-        public string message = "An empty room";
+        public string message;
         public bool isoccupied = false;
         public bool Isrevealed = false;
+
+        public abstract void RoomActivation();
+        public 
     }
 }
