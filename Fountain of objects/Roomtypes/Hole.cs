@@ -6,10 +6,10 @@ namespace Fountain_of_objects
     {
         public Hole()
         {
-            _Message = "hole";
-            _Isoccupied = true;
+            _message = "hole";
+            _isOccupied = true;
         }
-        public override bool Enterroom(Gridmap map,Player player)
+        public override bool EnterRoom(Gridmap map,Player player)
         {
             
             Console.WriteLine("you fell in a hole and lost all progress");

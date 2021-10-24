@@ -10,16 +10,16 @@ namespace Fountain_of_objects
     {
         public Fountain()
         {
-            _Message = "fountain";
-            _Isoccupied = true;
+            _message = "fountain";
+            _isOccupied = true;
         }
-        public override bool Enterroom(Gridmap map,Player player)
+        public override bool EnterRoom(Gridmap map,Player player)
         {
            
             Console.WriteLine("you found the fountain, but it seems deactivated and empty. You found a button. It is big and red, do you want to press it?Y/N");
             if (Console.ReadLine().Equals("Y", StringComparison.OrdinalIgnoreCase))
             {
-                _fountainactivated = true;
+                _fountainActivated = true;
                 Console.WriteLine("you press the button and the fountain lights up. you know the fountain have been activated");
                 return true;
             }

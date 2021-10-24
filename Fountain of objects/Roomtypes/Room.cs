@@ -2,11 +2,11 @@
 {
     public abstract class Room
     {
-        public string _Message;
-        public bool _Isoccupied = false;
-        public bool _Isrevealed = false;
-        public bool _fountainactivated = false;
+        public string _message;
+        public bool _isOccupied = false;
+        public bool _isRevealed = false;
+        public bool _fountainActivated = false;
 
-        public abstract bool Enterroom(Gridmap map, Player player);
+        public abstract bool EnterRoom(Gridmap map, Player player);
     }
 }

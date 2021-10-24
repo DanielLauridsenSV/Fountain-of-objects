@@ -6,12 +6,12 @@ namespace Fountain_of_objects
     {
         public Empty_Room()
         {
-            _Message = "An empty room";
-            _Isoccupied = false;
-            _Isrevealed = false;
+            _message = "An empty room";
+            _isOccupied = false;
+            _isRevealed = false;
         }
 
-        public override bool Enterroom(Gridmap map, Player player)
+        public override bool EnterRoom(Gridmap map, Player player)
         {
             Console.WriteLine("this is an empty room, there is nothing here of interest");
             return false;
