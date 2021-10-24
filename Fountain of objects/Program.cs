@@ -9,7 +9,6 @@ namespace Fountain_of_objects
         {
             Player player = new();
             Gridmap map = new(player.location);
-            bool gameOver = false;
             while (true)
             {
                 Console.Clear();

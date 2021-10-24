@@ -37,7 +37,7 @@ namespace Fountain_of_objects
                             }
                             else
                             {
-                                Console.WriteLine(" you did not not press a valid key, try again");
+                                Console.WriteLine("you cannot move past the edge of the map");
                                 break;
                             }
                         }
@@ -52,7 +52,7 @@ namespace Fountain_of_objects
                             }
                             else
                             {
-                                Console.WriteLine(" you did not not press a valid key, try again");
+                                Console.WriteLine("you cannot move past the edge of the map");
                                 break;
                             }
                         }
@@ -67,7 +67,7 @@ namespace Fountain_of_objects
                             }
                             else
                             {
-                                Console.WriteLine(" you did not not press a valid key, try again");
+                                Console.WriteLine("you cannot move past the edge of the map");
                                 break;
                             }
                         }
@@ -82,7 +82,7 @@ namespace Fountain_of_objects
                             }
                             else
                             {
-                                Console.WriteLine(" you did not not press a valid key, try again");
+                                Console.WriteLine("you cannot move past the edge of the map");
                                 break;
                             }
                         }
