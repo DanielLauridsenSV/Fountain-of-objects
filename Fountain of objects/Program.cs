@@ -28,8 +28,9 @@ namespace Fountain_of_objects
             if (roomevent.Equals("Hole", StringComparison.OrdinalIgnoreCase))
             {
                 Console.WriteLine("you fell in a hole and lost all progress");
-                player.location = player.startingposition;
                 map.Resetmap();
+                player.location.rightleft = player.startingposition.rightleft;
+                player.location.updown = player.startingposition.updown;
                 Console.ReadKey();
 
             }

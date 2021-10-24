@@ -126,7 +126,6 @@ namespace Fountain_of_objects
         public void Resetmap()
         {
             CreateGrid();
-
             placement(typeof(Fountain), NumberOfFountains);
             placement(typeof(Hole), NumberOfHoles);
         }
