@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fountain_of_objects
 {
@@ -10,10 +6,9 @@ namespace Fountain_of_objects
     {
         public Hole()
         {
-            message = "hole";
-            isoccupied = true;
+            _Message = "hole";
+            _Isoccupied = true;
         }
-
         public override bool Enterroom(Gridmap map,Player player)
         {
             

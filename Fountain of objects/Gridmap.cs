@@ -33,7 +33,7 @@ namespace Fountain_of_objects
             int dimension2 = rand.Next(0, _width);
             for (int i = 0; i < amount; i++)
             {
-                while (grid[dimension1, dimension2].isoccupied)
+                while (grid[dimension1, dimension2]._Isoccupied)
                 {
                     dimension1 = rand.Next(0, 5);
                     dimension2 = rand.Next(0, 5);
@@ -51,18 +51,18 @@ namespace Fountain_of_objects
             {
                 for (int j = 0; j < _width; j++)
                 {
-                    if (grid[i, j].Isrevealed == true)
+                    if (grid[i, j]._Isrevealed == true)
                     {
                         if (position.UpDown == i && position.RightLeft == j)
                         {
                             Console.BackgroundColor = ConsoleColor.DarkBlue;
-                            Console.Write($"{grid[i, j].message,-13}");
+                            Console.Write($"{grid[i, j]._Message,-13}");
                             Console.BackgroundColor = ConsoleColor.Black;
                             Console.Write("|");
                         }
                         else
                         {
-                            Console.Write($"{grid[i, j].message,-13}|");
+                            Console.Write($"{grid[i, j]._Message,-13}|");
                         }
                     }
                     else
@@ -81,7 +81,7 @@ namespace Fountain_of_objects
             Placement(typeof(Fountain), _numberOfFountains);
             Placement(typeof(Hole), _numberOfHoles);
         }
-        public void MakePositionVisible(playerposition position) => grid[position.UpDown, position.RightLeft].Isrevealed = true;
+        public void MakePositionVisible(playerposition position) => grid[position.UpDown, position.RightLeft]._Isrevealed = true;
         private void CreateEntrypoint(playerposition firstturn) => grid[firstturn.UpDown, firstturn.RightLeft] = new Entryroom();
     }
 }

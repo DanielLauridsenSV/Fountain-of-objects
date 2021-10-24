@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fountain_of_objects
 {
@@ -10,9 +6,9 @@ namespace Fountain_of_objects
     {
         public Entryroom()
         {
-            message = "entry";
-            isoccupied = true;
-            Isrevealed = true;
+            _Message = "entry";
+            _Isoccupied = true;
+            _Isrevealed = true;
         }
 
         public override bool Enterroom(Gridmap map, Player player)
