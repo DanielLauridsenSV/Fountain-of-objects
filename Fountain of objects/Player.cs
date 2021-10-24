@@ -14,6 +14,9 @@ namespace Fountain_of_objects
             Logger = new();
             Logger.Add(Location);
         }
+        /// <summary>
+        /// allows player to chose move, and checks if it is a allowed move.
+        /// </summary>
         public void Chosedirection()
         {
 

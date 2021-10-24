@@ -1,5 +1,8 @@
 ﻿namespace Fountain_of_objects
 {
+    /// <summary>
+    ///  class used to track playerposition in two dimensions
+    /// </summary>
     public class playerposition
     {
        public int UpDown { get; set; }

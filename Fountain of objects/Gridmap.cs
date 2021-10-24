@@ -16,6 +16,10 @@ namespace Fountain_of_objects
         private readonly int _numberOfFountains = 1;
         Random rand = new();
 
+        /// <summary>
+        /// create the map and places objects on the map. 
+        /// </summary>
+        /// <param name="player"></param>
         public void Resetmap(Player player)
         {
             CreateGrid();
@@ -23,6 +27,9 @@ namespace Fountain_of_objects
             Placement(typeof(Fountain), _numberOfFountains);
             Placement(typeof(Hole), _numberOfHoles);
         }
+        /// <summary>
+        ///creates the gridmap on which the game is played.
+        /// </summary>
         private void CreateGrid()
         {
            Grid = new Room [_height, _width];
@@ -34,6 +41,11 @@ namespace Fountain_of_objects
                 }
             }
         }
+        /// <summary>
+        /// places objects in the gridmap
+        /// </summary>
+        /// <param name="eventType"></param>
+        /// <param name="amount"></param>
         private void Placement(Type eventType, int amount)
         {
             int dimension1 = rand.Next(0, _height);
@@ -48,6 +60,10 @@ namespace Fountain_of_objects
                 Grid[dimension1, dimension2] =(Room)Activator.CreateInstance(eventType);
             }
         }
+        /// <summary>
+        /// Visualization of the gridmap where player position is highlighted
+        /// </summary>
+        /// <param name="location"></param>
         public void VisualizeMap(playerposition location)
         {
 
@@ -82,7 +98,15 @@ namespace Fountain_of_objects
             }
         }
 
+        /// <summary>
+        /// makes the room at players position revealed and thus able to display message
+        /// </summary>
+        /// <param name="location"></param>
         public void MakePositionVisible(playerposition location) => Grid[location.UpDown, location.RightLeft]._isRevealed = true;
+        /// <summary>
+        /// creates the entryroom and specified location.
+        /// </summary>
+        /// <param name="location"></param>
         private void CreateEntrypoint(playerposition location) => Grid[location.UpDown, location.RightLeft] = new Entryroom();
     }
 }

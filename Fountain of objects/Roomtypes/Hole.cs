@@ -9,6 +9,12 @@ namespace Fountain_of_objects
             _message = "hole";
             _isOccupied = true;
         }
+        /// <summary>
+        /// resets game and moves player to entryposition
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public override bool EnterRoom(Gridmap map,Player player)
         {
             
