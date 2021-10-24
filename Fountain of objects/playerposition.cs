@@ -2,18 +2,18 @@
 {
     public class playerposition
     {
-       public int updown { get; set; }
-        public int rightleft { get; set; }
+       public int UpDown { get; set; }
+        public int RightLeft { get; set; }
 
         public playerposition(int updownvalue,int rightleftvalue)
         {
-            updown = updownvalue;
-            rightleft = rightleftvalue;
+            UpDown = updownvalue;
+            RightLeft = rightleftvalue;
         }
         public playerposition(playerposition position)
         {
-            updown = position.updown;
-            rightleft = position.rightleft;
+            UpDown = position.UpDown;
+            RightLeft = position.RightLeft;
         }
     }
 }

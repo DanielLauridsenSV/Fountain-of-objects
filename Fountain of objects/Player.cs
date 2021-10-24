@@ -13,13 +13,9 @@ namespace Fountain_of_objects
         public  List<playerposition> Logger { get; set; }
         public Player()
         {
-            location = new(startingposition.updown,startingposition.rightleft);
+            location = new(startingposition.UpDown,startingposition.RightLeft);
             Logger = new();
             Logger.Add(location);
-        }
-        public void DisplayPosition()
-        {
-            Console.WriteLine($"you are currently at {location.updown+1} from the top and {location.rightleft+1} from the left");
         }
         public void Chosedirection()
         {
@@ -32,9 +28,9 @@ namespace Fountain_of_objects
                 {
                     case ConsoleKey.UpArrow:
                         {
-                            if (location.updown- 1 >= 0)
+                            if (location.UpDown- 1 >= 0)
                             {
-                                location.updown = location.updown -1;
+                                location.UpDown = location.UpDown -1;
                                 Logger.Add(new playerposition(location));
                                 possiblemove = true;
                                 break;
@@ -47,9 +43,9 @@ namespace Fountain_of_objects
                         }
                     case ConsoleKey.DownArrow:
                         {
-                            if (location.updown + 1 <= 4)
+                            if (location.UpDown + 1 <= 4)
                             {
-                                location.updown = location.updown +1;
+                                location.UpDown = location.UpDown +1;
                                 Logger.Add( new playerposition(location));
                                 possiblemove = true;
                                 break;
@@ -62,9 +58,9 @@ namespace Fountain_of_objects
                         }
                     case ConsoleKey.LeftArrow:
                         {
-                            if (location.rightleft - 1 >= 0)
+                            if (location.RightLeft - 1 >= 0)
                             {
-                                location.rightleft = location.rightleft -1;
+                                location.RightLeft = location.RightLeft -1;
                                 Logger.Add(new playerposition(location));
                                 possiblemove = true;
                                 break;
@@ -77,9 +73,9 @@ namespace Fountain_of_objects
                         }
                     case ConsoleKey.RightArrow:
                         {
-                            if (location.rightleft + 1 <= 4)
+                            if (location.RightLeft + 1 <= 4)
                             {
-                                location.rightleft = location.rightleft+1;
+                                location.RightLeft = location.RightLeft+1;
                                 Logger.Add(new playerposition(location));
                                 possiblemove = true;
                                 break;

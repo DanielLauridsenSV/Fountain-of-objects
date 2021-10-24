@@ -9,10 +9,10 @@ namespace Fountain_of_objects
 
     public class Gridmap
     {
-        public Room[,] grid { get; set; }
-        private int Height { get; set; } = 5;
-        private int Width { get; set; } = 5;
-        private int NumberOfHoles { get; } = 7;
+        public Room[,] grid { get; private set; }
+        private int _Height  = 5;
+        private int _Width  = 5;
+        private int _NumberOfHoles  = 7;
         private int NumberOfFountains { get; } = 1;
         Random rand = new();
 
@@ -20,15 +20,15 @@ namespace Fountain_of_objects
         {
             CreateGrid();
             CreateEntrypoint(Firstposition);
-            placement(typeof(Fountain), NumberOfFountains);
-            placement(typeof(Hole), NumberOfHoles);
+            Placement(typeof(Fountain), NumberOfFountains);
+            Placement(typeof(Hole), _NumberOfHoles);
         }
         private void CreateGrid()
         {
-            grid = new Room[Height, Width];
-            for (int i = 0; i < Height; i++)
+            grid = new Room[_Height, _Width];
+            for (int i = 0; i < _Height; i++)
             {
-                for (int j = 0; j < Width; j++)
+                for (int j = 0; j < _Width; j++)
                 {
                     grid[i, j] = new Empty_Room();
                 }
@@ -36,12 +36,12 @@ namespace Fountain_of_objects
         }
         private void CreateEntrypoint(playerposition firstturn)
         {
-            grid[firstturn.updown, firstturn.rightleft] = new Entryroom();
+            grid[firstturn.UpDown, firstturn.RightLeft] = new Entryroom();
         }
-        private void placement(Type eventype, int amount)
+        private void Placement(Type eventype, int amount)
         {
-            int dimension1 = rand.Next(0, 5);
-            int dimension2 = rand.Next(0, 5);
+            int dimension1 = rand.Next(0, _Height);
+            int dimension2 = rand.Next(0, _Width);
             for (int i = 0; i < amount; i++)
             {
                 while (grid[dimension1, dimension2].isoccupied)
@@ -58,13 +58,13 @@ namespace Fountain_of_objects
             Isvisible(position);
 
             Console.Write($"{"______________________________________________________________________"}\n");
-            for (int i = 0; i < Height; i++)
+            for (int i = 0; i < _Height; i++)
             {
-                for (int j = 0; j < Width; j++)
+                for (int j = 0; j < _Width; j++)
                 {
                     if (grid[i, j].Isrevealed == true)
                     {
-                        if (position.updown == i && position.rightleft == j)
+                        if (position.UpDown == i && position.RightLeft == j)
                         {
                             Console.BackgroundColor = ConsoleColor.DarkBlue;
                             Console.Write($"{grid[i, j].message,-13}");
@@ -89,7 +89,7 @@ namespace Fountain_of_objects
         }
         public void Isvisible(playerposition position)
         {
-            grid[position.updown, position.rightleft].Isrevealed = true;
+            grid[position.UpDown, position.RightLeft].Isrevealed = true;
         }
         public string roomevent(Room Roomtype)
         {
@@ -123,11 +123,12 @@ namespace Fountain_of_objects
             
            
         }
-        public void Resetmap()
+        public void Resetmap(Player player)
         {
             CreateGrid();
-            placement(typeof(Fountain), NumberOfFountains);
-            placement(typeof(Hole), NumberOfHoles);
+            CreateEntrypoint(player.startingposition);
+            Placement(typeof(Fountain), NumberOfFountains);
+            Placement(typeof(Hole), _NumberOfHoles);
         }
     }
 }

@@ -9,42 +9,48 @@ namespace Fountain_of_objects
         {
             Player player = new();
             Gridmap map = new(player.location);
-
+            bool gameOver = false;
             while (true)
             {
                 Console.Clear();
-                player.DisplayPosition();
                 map.Visualizemap(player.location);
-                Room Roomtype = map.grid[player.location.updown, player.location.rightleft];
-                string roomevent = map.roomevent(Roomtype);
-                eventchecker(map, player, roomevent);
+                Room roomType = map.grid[player.location.UpDown, player.location.RightLeft];
+                string roomEvent = map.roomevent(roomType);
+                if (EventChecker(map, player, roomEvent))
+                {
+                    break;
+                };
+                Console.Clear();
+                map.Visualizemap(player.location);
                 player.Chosedirection();
 
             }
-
         }
-        public static void eventchecker(Gridmap map, Player player, string roomevent)
+        public static bool EventChecker(Gridmap map, Player player, string roomEvent)
         {
-            if (roomevent.Equals("Hole", StringComparison.OrdinalIgnoreCase))
+
+            if (roomEvent.Equals("Hole", StringComparison.OrdinalIgnoreCase))
             {
                 Console.WriteLine("you fell in a hole and lost all progress");
-                map.Resetmap();
-                player.location.rightleft = player.startingposition.rightleft;
-                player.location.updown = player.startingposition.updown;
+                map.Resetmap(player);
+                player.location.RightLeft = player.startingposition.RightLeft;
+                player.location.UpDown = player.startingposition.UpDown;
                 Console.ReadKey();
+                return false;
 
             }
-            else if (roomevent.Equals("fountain", StringComparison.OrdinalIgnoreCase))
+            else if (roomEvent.Equals("fountain", StringComparison.OrdinalIgnoreCase))
             {
-                map.grid[player.location.updown, player.location.rightleft].Enterroom();
+                map.grid[player.location.UpDown, player.location.RightLeft].Enterroom();
+
             }
-            if (map.grid[player.location.updown, player.location.rightleft].fountainactivated)
+            if (map.grid[player.location.UpDown, player.location.RightLeft].fountainactivated)
             {
                 Console.WriteLine(" you leave the labyrinth with the wisdom of the fountain");
                 Console.ReadKey();
-
+                return true;
             }
-
+            return false;
         }
 
     }
