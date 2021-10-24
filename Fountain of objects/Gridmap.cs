@@ -12,7 +12,7 @@ namespace Fountain_of_objects
         public Room[,] Grid { get; private set; }
         private readonly int _height  = 5;
         private readonly int _width  = 5;
-        private readonly int _numberOfHoles  = 7;
+        private readonly int _numberOfHoles  = 6;
         private readonly int _numberOfFountains = 1;
         Random rand = new();
 
