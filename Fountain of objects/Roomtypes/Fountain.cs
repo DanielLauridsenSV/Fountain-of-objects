@@ -21,7 +21,6 @@ namespace Fountain_of_objects
             {
                 fountainactivated = true;
                 Console.WriteLine("you press the button and the fountain lights up. you know the fountain have been activated");
-                Console.ReadLine();
                 return true;
             }
             return false;

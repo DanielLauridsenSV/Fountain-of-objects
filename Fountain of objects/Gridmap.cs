@@ -27,8 +27,6 @@ namespace Fountain_of_objects
                 }
             }
         }
-        
-        
         private void Placement(Type eventype, int amount)
         {
             int dimension1 = rand.Next(0, _height);
@@ -43,10 +41,10 @@ namespace Fountain_of_objects
                 grid[dimension1, dimension2] = (Room)Activator.CreateInstance(eventype);
             }
         }
-        public void Visualizemap(playerposition position)
+        public void VisualizeMap(playerposition position)
         {
 
-            Isvisible(position);
+            MakePositionVisible(position);
             string lines = ("______________________________________________________________________");
             Console.Write($"{lines}\n");
             for (int i = 0; i < _height; i++)
@@ -83,7 +81,7 @@ namespace Fountain_of_objects
             Placement(typeof(Fountain), _numberOfFountains);
             Placement(typeof(Hole), _numberOfHoles);
         }
-        public void Isvisible(playerposition position) => grid[position.UpDown, position.RightLeft].Isrevealed = true;
+        public void MakePositionVisible(playerposition position) => grid[position.UpDown, position.RightLeft].Isrevealed = true;
         private void CreateEntrypoint(playerposition firstturn) => grid[firstturn.UpDown, firstturn.RightLeft] = new Entryroom();
     }
 }

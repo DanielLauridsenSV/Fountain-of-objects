@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Threading;
 
 namespace Fountain_of_objects
 {
@@ -13,13 +13,25 @@ namespace Fountain_of_objects
             while (true)
             {
                 Console.Clear();
-                map.Visualizemap(player.Location);
-                //if (EventChecker(map, player)) { break; }
+                map.VisualizeMap(player.Location);
                 player.Chosedirection();
                 Console.Clear(); 
-                map.Visualizemap(player.Location);
+                map.VisualizeMap(player.Location);
                 if (map.grid[player.Location.UpDown, player.Location.RightLeft].Enterroom(map, player))
-                {break;}  
+                {
+                    break;
+                }
+                sleep();
+            }
+            sleep();
+        }
+        public static void sleep()
+        {
+            string dots= (".....");
+            for (int i = 0; i <dots.Length ; i++)
+            {
+                Console.Write(dots[i]);
+                Thread.Sleep(230);
             }
         }
     }

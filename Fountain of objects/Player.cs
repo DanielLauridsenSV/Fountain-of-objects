@@ -8,7 +8,7 @@ namespace Fountain_of_objects
 {
     public class Player
     {
-        public playerposition Startingposition { get;init; } = new(4, 2);
+        public readonly playerposition Startingposition = new(4, 2);
         public playerposition Location { get; set; }
         public  List<playerposition> Logger { get; set; }
         public Player()
