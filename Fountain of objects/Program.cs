@@ -17,7 +17,7 @@ namespace Fountain_of_objects
                 player.Chosedirection();
                 Console.Clear(); 
                 map.VisualizeMap(player.Location);
-                if (map.grid[player.Location.UpDown, player.Location.RightLeft].Enterroom(map, player))
+                if (map.Grid[player.Location.UpDown, player.Location.RightLeft].Enterroom(map, player))
                 {
                     break;
                 }
