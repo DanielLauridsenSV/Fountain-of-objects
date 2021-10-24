@@ -21,19 +21,11 @@ namespace Fountain_of_objects
                 {
                     break;
                 }
-                sleep();
+                supportclass.Sleep();
             }
-            sleep();
+            supportclass.Sleep();
         }
-        public static void sleep()
-        {
-            string dots= (".....");
-            for (int i = 0; i <dots.Length ; i++)
-            {
-                Console.Write(dots[i]);
-                Thread.Sleep(230);
-            }
-        }
+
     }
 }
 
