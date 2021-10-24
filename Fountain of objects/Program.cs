@@ -13,43 +13,15 @@ namespace Fountain_of_objects
             while (true)
             {
                 Console.Clear();
-                map.Visualizemap(player.location);
-                if (EventChecker(map, player)){ break; }
-                Console.Clear();
-                map.Visualizemap(player.location);
+                map.Visualizemap(player.Location);
+                //if (EventChecker(map, player)) { break; }
                 player.Chosedirection();
-
+                Console.Clear(); 
+                map.Visualizemap(player.Location);
+                if (map.grid[player.Location.UpDown, player.Location.RightLeft].Enterroom(map, player))
+                {break;}  
             }
         }
-        public static bool EventChecker(Gridmap map, Player player)
-        {
-            Type roomType = (map.grid[player.location.UpDown, player.location.RightLeft].GetType());
-
-
-            if (roomType.Equals(typeof(Hole)))
-            {
-                Console.WriteLine("you fell in a hole and lost all progress");
-                map.Resetmap(player);
-                player.location.RightLeft = player.startingposition.RightLeft;
-                player.location.UpDown = player.startingposition.UpDown;
-                Console.ReadKey();
-                return false;
-
-            }
-            else if (roomType.Equals(typeof(Fountain)))
-            {
-                map.grid[player.location.UpDown, player.location.RightLeft].Enterroom();
-
-            }
-            if (map.grid[player.location.UpDown, player.location.RightLeft].fountainactivated)
-            {
-                Console.WriteLine(" you leave the labyrinth with the wisdom of the fountain");
-                Console.ReadKey();
-                return true;
-            }
-            return false;
-        }
-
     }
 }
 

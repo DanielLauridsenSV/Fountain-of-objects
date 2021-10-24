@@ -13,7 +13,7 @@ namespace Fountain_of_objects
         public bool Isrevealed = false;
         public bool fountainactivated = false;
 
-        public abstract void Enterroom();
+        public abstract bool Enterroom(Gridmap map, Player player);
      
     }
 }

@@ -15,9 +15,10 @@ namespace Fountain_of_objects
             Isrevealed = true;
         }
 
-        public override void Enterroom()
+        public override bool Enterroom(Gridmap map, Player player)
         {
             Console.WriteLine("the room is near the entrance to the labyrinth, you can feel the warm breeze from outside");
+            return false;
         }
     }
 }

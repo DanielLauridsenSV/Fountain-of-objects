@@ -15,9 +15,15 @@ namespace Fountain_of_objects
             isoccupied = true;
         }
 
-        public override void Enterroom()
+        public override bool Enterroom(Gridmap map,Player player)
         {
-            Console.WriteLine("you fell into a hole, and lost all progress");
+            
+            Console.WriteLine("you fell in a hole and lost all progress");
+            map.Resetmap(player);
+            player.Location.RightLeft = player.Startingposition.RightLeft;
+            player.Location.UpDown = player.Startingposition.UpDown;
+            Console.ReadKey();
+            return false;
         }
     }
 }

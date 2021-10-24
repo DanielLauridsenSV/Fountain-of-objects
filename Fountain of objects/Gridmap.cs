@@ -27,10 +27,8 @@ namespace Fountain_of_objects
                 }
             }
         }
-        private void CreateEntrypoint(playerposition firstturn)
-        {
-            grid[firstturn.UpDown, firstturn.RightLeft] = new Entryroom();
-        }
+        
+        
         private void Placement(Type eventype, int amount)
         {
             int dimension1 = rand.Next(0, _height);
@@ -47,10 +45,10 @@ namespace Fountain_of_objects
         }
         public void Visualizemap(playerposition position)
         {
-            
-            Isvisible(position);
 
-            Console.Write($"{"______________________________________________________________________"}\n");
+            Isvisible(position);
+            string lines = ("______________________________________________________________________");
+            Console.Write($"{lines}\n");
             for (int i = 0; i < _height; i++)
             {
                 for (int j = 0; j < _width; j++)
@@ -75,21 +73,18 @@ namespace Fountain_of_objects
                     }
 
                 }
-                Console.Write($"\n{"______________________________________________________________________"}\n");
+                Console.Write($"\n{lines}\n");
             }
         }
-        public void Isvisible(playerposition position)
-        {
-            grid[position.UpDown, position.RightLeft].Isrevealed = true;
-        }
-            
         public void Resetmap(Player player)
         {
             CreateGrid();
-            CreateEntrypoint(player.startingposition);
+            CreateEntrypoint(player.Startingposition);
             Placement(typeof(Fountain), _numberOfFountains);
             Placement(typeof(Hole), _numberOfHoles);
         }
+        public void Isvisible(playerposition position) => grid[position.UpDown, position.RightLeft].Isrevealed = true;
+        private void CreateEntrypoint(playerposition firstturn) => grid[firstturn.UpDown, firstturn.RightLeft] = new Entryroom();
     }
 }
 

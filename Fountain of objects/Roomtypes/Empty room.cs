@@ -15,15 +15,12 @@ namespace Fountain_of_objects
                 Isrevealed = false;
             }
 
-        public override void Enterroom()
+        public override bool Enterroom(Gridmap map, Player player)
         {
+          
             Console.WriteLine("this is an empty room, there is nothing here of interest");
+            return false;
         }
-
-        //public override void RoomActivation()
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
     }
 

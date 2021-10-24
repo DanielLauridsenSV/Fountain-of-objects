@@ -8,14 +8,14 @@ namespace Fountain_of_objects
 {
     public class Player
     {
-        public playerposition startingposition { get;init; } = new(4, 2);
-        public playerposition location { get; set; }
+        public playerposition Startingposition { get;init; } = new(4, 2);
+        public playerposition Location { get; set; }
         public  List<playerposition> Logger { get; set; }
         public Player()
         {
-            location = new(startingposition.UpDown,startingposition.RightLeft);
+            Location = new(Startingposition.UpDown,Startingposition.RightLeft);
             Logger = new();
-            Logger.Add(location);
+            Logger.Add(Location);
         }
         public void Chosedirection()
         {
@@ -28,10 +28,10 @@ namespace Fountain_of_objects
                 {
                     case ConsoleKey.UpArrow:
                         {
-                            if (location.UpDown- 1 >= 0)
+                            if (Location.UpDown- 1 >= 0)
                             {
-                                location.UpDown = location.UpDown -1;
-                                Logger.Add(new playerposition(location));
+                                Location.UpDown = Location.UpDown -1;
+                                Logger.Add(new playerposition(Location));
                                 possiblemove = true;
                                 break;
                             }
@@ -43,10 +43,10 @@ namespace Fountain_of_objects
                         }
                     case ConsoleKey.DownArrow:
                         {
-                            if (location.UpDown + 1 <= 4)
+                            if (Location.UpDown + 1 <= 4)
                             {
-                                location.UpDown = location.UpDown +1;
-                                Logger.Add( new playerposition(location));
+                                Location.UpDown = Location.UpDown +1;
+                                Logger.Add( new playerposition(Location));
                                 possiblemove = true;
                                 break;
                             }
@@ -58,10 +58,10 @@ namespace Fountain_of_objects
                         }
                     case ConsoleKey.LeftArrow:
                         {
-                            if (location.RightLeft - 1 >= 0)
+                            if (Location.RightLeft - 1 >= 0)
                             {
-                                location.RightLeft = location.RightLeft -1;
-                                Logger.Add(new playerposition(location));
+                                Location.RightLeft = Location.RightLeft -1;
+                                Logger.Add(new playerposition(Location));
                                 possiblemove = true;
                                 break;
                             }
@@ -73,10 +73,10 @@ namespace Fountain_of_objects
                         }
                     case ConsoleKey.RightArrow:
                         {
-                            if (location.RightLeft + 1 <= 4)
+                            if (Location.RightLeft + 1 <= 4)
                             {
-                                location.RightLeft = location.RightLeft+1;
-                                Logger.Add(new playerposition(location));
+                                Location.RightLeft = Location.RightLeft+1;
+                                Logger.Add(new playerposition(Location));
                                 possiblemove = true;
                                 break;
                             }
