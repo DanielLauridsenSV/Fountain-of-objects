@@ -8,27 +8,25 @@ namespace Fountain_of_objects
         static void Main(string[] args)
         {
             Player player = new();
-            Gridmap map = new(player.location);
+            Gridmap map = new();
+            map.Resetmap(player);
             while (true)
             {
                 Console.Clear();
                 map.Visualizemap(player.location);
-                Room roomType = map.grid[player.location.UpDown, player.location.RightLeft];
-                string roomEvent = map.roomevent(roomType);
-                if (EventChecker(map, player, roomEvent))
-                {
-                    break;
-                };
+                if (EventChecker(map, player)){ break; }
                 Console.Clear();
                 map.Visualizemap(player.location);
                 player.Chosedirection();
 
             }
         }
-        public static bool EventChecker(Gridmap map, Player player, string roomEvent)
+        public static bool EventChecker(Gridmap map, Player player)
         {
+            Type roomType = (map.grid[player.location.UpDown, player.location.RightLeft].GetType());
 
-            if (roomEvent.Equals("Hole", StringComparison.OrdinalIgnoreCase))
+
+            if (roomType.Equals(typeof(Hole)))
             {
                 Console.WriteLine("you fell in a hole and lost all progress");
                 map.Resetmap(player);
@@ -38,7 +36,7 @@ namespace Fountain_of_objects
                 return false;
 
             }
-            else if (roomEvent.Equals("fountain", StringComparison.OrdinalIgnoreCase))
+            else if (roomType.Equals(typeof(Fountain)))
             {
                 map.grid[player.location.UpDown, player.location.RightLeft].Enterroom();
 
