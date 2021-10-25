@@ -5,9 +5,9 @@ namespace Fountain_of_objects
 {
     public class Player
     {
-        public readonly playerposition Startingposition = new(4, 2);
-        public playerposition Location { get; set; }
-        public List<playerposition> Logger { get; set; }
+        public readonly Position Startingposition = new(4, 2);
+        public Position Location { get; set; }
+        public List<Position> Logger { get; set; }
         public Player()
         {
             Location = new(Startingposition.UpDown, Startingposition.RightLeft);
@@ -30,7 +30,7 @@ namespace Fountain_of_objects
                         if (Location.UpDown - 1 >= 0)
                         {
                             Location.UpDown = Location.UpDown - 1;
-                            Logger.Add(new playerposition(Location));
+                            Logger.Add(new Position(Location));
                             break;
                         }
                         else
@@ -44,7 +44,7 @@ namespace Fountain_of_objects
                         if (Location.UpDown + 1 <= 4)
                         {
                             Location.UpDown = Location.UpDown + 1;
-                            Logger.Add(new playerposition(Location));
+                            Logger.Add(new Position(Location));
                             break;
                         }
                         else
@@ -58,7 +58,7 @@ namespace Fountain_of_objects
                         if (Location.RightLeft - 1 >= 0)
                         {
                             Location.RightLeft = Location.RightLeft - 1;
-                            Logger.Add(new playerposition(Location));
+                            Logger.Add(new Position(Location));
                             break;
                         }
                         else
@@ -72,7 +72,7 @@ namespace Fountain_of_objects
                         if (Location.RightLeft + 1 <= 4)
                         {
                             Location.RightLeft = Location.RightLeft + 1;
-                            Logger.Add(new playerposition(Location));
+                            Logger.Add(new Position(Location));
                             break;
                         }
                         else

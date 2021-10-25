@@ -14,8 +14,20 @@ namespace Fountain_of_objects
             for (int i = 0; i < dots.Length; i++)
             {
                 Console.Write(dots[i]);
-                Thread.Sleep(3230);
+                Thread.Sleep(time);
             }
+        }
+        public static Position determineposition(Gridmap map)
+        {
+            Random random = new Random();
+            int dimension1 = random.Next(0, map._height);
+            int dimension2 = random.Next(0, map._width);
+            while (map.Grid[dimension1, dimension2]._isOccupied)
+            {
+                dimension1 = random.Next(0, map._height);
+                dimension2 = random.Next(0, map._width);
+            }
+            return new Position(dimension1, dimension2);
         }
     }
 }

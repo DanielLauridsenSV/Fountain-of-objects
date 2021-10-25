@@ -10,10 +10,11 @@ namespace Fountain_of_objects
     public class Gridmap
     {
         public Room[,] Grid { get; set; }
-        private readonly int _height  = 5;
-        private readonly int _width  = 5;
+        public readonly int _height  = 5;
+        public readonly int _width  = 5;
         private readonly int _numberOfHoles  = 6;
         private readonly int _numberOfFountains = 1;
+        private readonly int _numberofmaelstroms = 2;
         private Random rand = new();
 
         /// <summary>
@@ -26,6 +27,7 @@ namespace Fountain_of_objects
             CreateEntrypoint(player.Startingposition);
             Placement(typeof(Fountain), _numberOfFountains);
             Placement(typeof(Hole), _numberOfHoles);
+            Placement(typeof(Maelstrom), _numberofmaelstroms);
         }
         /// <summary>
         ///creates the gridmap on which the game is played.
@@ -48,23 +50,24 @@ namespace Fountain_of_objects
         /// <param name="amount"></param>
         private void Placement(Type eventType, int amount)
         {
-            int dimension1 = rand.Next(0, _height);
-            int dimension2 = rand.Next(0, _width);
+            Position position = new(0,0);
+            position.UpDown = rand.Next(0, _height);
+            position.RightLeft = rand.Next(0, _width);
             for (int i = 0; i < amount; i++)
             {
-                while (Grid[dimension1, dimension2]._isOccupied)
+                while (Grid[position.UpDown,position.RightLeft]._isOccupied)
                 {
-                    dimension1 = rand.Next(0, 5);
-                    dimension2 = rand.Next(0, 5);
+                    position.UpDown = rand.Next(0, 5);
+                    position.RightLeft = rand.Next(0, 5);
                 }
-                Grid[dimension1, dimension2] =(Room)Activator.CreateInstance(eventType);
+                Grid[position.UpDown, position.RightLeft] =(Room)Activator.CreateInstance(eventType);
             }
         }
         /// <summary>
         /// Visualization of the gridmap where player position is highlighted
         /// </summary>
         /// <param name="location"></param>
-        public void VisualizeMap(playerposition location)
+        public void VisualizeMap(Position location)
         {
 
             MakePositionVisible(location);
@@ -102,12 +105,12 @@ namespace Fountain_of_objects
         /// makes the room at players position revealed and thus able to display message
         /// </summary>
         /// <param name="location"></param>
-        public void MakePositionVisible(playerposition location) => Grid[location.UpDown, location.RightLeft]._isRevealed = true;
+        public void MakePositionVisible(Position location) => Grid[location.UpDown, location.RightLeft]._isRevealed = true;
         /// <summary>
         /// creates the entryroom and specified location.
         /// </summary>
         /// <param name="location"></param>
-        private void CreateEntrypoint(playerposition location) => Grid[location.UpDown, location.RightLeft] = new Entryroom();
+        private void CreateEntrypoint(Position location) => Grid[location.UpDown, location.RightLeft] = new Entryroom();
     }
 }
 

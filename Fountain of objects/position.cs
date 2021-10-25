@@ -3,17 +3,17 @@
     /// <summary>
     ///  class used to track playerposition in two dimensions
     /// </summary>
-    public class playerposition
+    public class Position
     {
-       public int UpDown { get; set; }
+        public int UpDown { get; set; }
         public int RightLeft { get; set; }
 
-        public playerposition(int updownvalue,int rightleftvalue)
+        public Position(int updownvalue, int rightleftvalue)
         {
             UpDown = updownvalue;
             RightLeft = rightleftvalue;
         }
-        public playerposition(playerposition position)
+        public Position(Position position)
         {
             UpDown = position.UpDown;
             RightLeft = position.RightLeft;
