@@ -9,12 +9,12 @@ namespace Fountain_of_objects
 
     public class Gridmap
     {
-        public Room[,] Grid { get; private set; }
+        public Room[,] Grid { get; set; }
         private readonly int _height  = 5;
         private readonly int _width  = 5;
         private readonly int _numberOfHoles  = 6;
         private readonly int _numberOfFountains = 1;
-        Random rand = new();
+        private Random rand = new();
 
         /// <summary>
         /// create the map and places objects on the map. 
