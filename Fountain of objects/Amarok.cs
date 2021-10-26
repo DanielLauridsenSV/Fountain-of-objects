@@ -10,13 +10,13 @@ namespace Fountain_of_objects
     {
         Position Amarokposition { get; set; }
         private Random random = new Random();
-        public Amarok(Gridmap map,Player player)
+        public Amarok(Gridmap map, Player player)
         {
-            Amarokposition = new Position(random.Next(0,map._height),random.Next(0,map._width));
-            while (Amarokposition == player.Startingposition || 
-                map.Grid[Amarokposition.UpDown, Amarokposition.RightLeft].GetType() ==typeof(Fountain))
+            Amarokposition = new Position(random.Next(0, map._height), random.Next(0, map._width));
+            while (Amarokposition == player.Startingposition ||
+                map.Grid[Amarokposition.UpDown, Amarokposition.RightLeft].GetType() == typeof(Fountain))
             {
-                Amarokposition.UpDown =(random.Next(0, map._height));
+                Amarokposition.UpDown = (random.Next(0, map._height));
                 Amarokposition.RightLeft = (random.Next(0, map._width));
             }
 
@@ -24,16 +24,48 @@ namespace Fountain_of_objects
         public void Amarokmovement(Gridmap map)
         {
             map.Grid[Amarokposition.UpDown, Amarokposition.RightLeft].containsAmarok = false;
-           
-            if (random.Next(0, 2)==1)
+            int updownorRightleft = random.Next(0, 2);
+            if (updownorRightleft == 1)
             {
-                Amarokposition.UpDown = Amarokposition.UpDown + random.Next(-2, 2);
+                int upordown = random.Next(0, 2);
+                if (Amarokposition.UpDown<4 && upordown > 0)
+                {
+                    Amarokposition.UpDown++;
+                }
+                else if (Amarokposition.UpDown ==4 && upordown>0 )
+                {
+                    Amarokposition.UpDown--;
+                }
+                else if (Amarokposition.UpDown > 0 && upordown ==0 )
+                {
+                    Amarokposition.UpDown--;
+                }
+                else if (Amarokposition.UpDown == 0 && upordown == 0)
+                {
+                    Amarokposition.UpDown++;
+                }
             }
             else
             {
-                Amarokposition.RightLeft = Amarokposition.RightLeft + random.Next(-2, 2);
+                int Rightorleft = random.Next(0, 2);
+                if (Amarokposition.RightLeft < 4 && Rightorleft > 0)
+                {
+                    Amarokposition.RightLeft++;
+                }
+                else if (Amarokposition.RightLeft == 4 && Rightorleft > 0)
+                {
+                    Amarokposition.RightLeft--;
+                }
+                else if (Amarokposition.RightLeft > 0 && Rightorleft == 0)
+                {
+                    Amarokposition.RightLeft--;
+                }
+                else if (Amarokposition.RightLeft == 0 && Rightorleft == 0)
+                {
+                    Amarokposition.UpDown++;
+                }
             }
-            map.Grid[Amarokposition.UpDown, Amarokposition.RightLeft].containsAmarok =true;
+            map.Grid[Amarokposition.UpDown, Amarokposition.RightLeft].containsAmarok = true;
         }
     }
 }
