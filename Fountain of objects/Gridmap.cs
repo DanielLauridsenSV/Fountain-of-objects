@@ -113,20 +113,21 @@ namespace Fountain_of_objects
         private void CreateEntrypoint(Position location) => Grid[location.UpDown, location.RightLeft] = new Entryroom();
         public void SenseDanger(Position playerposition)
         {
-            try
+            senseobject(playerposition,typeof(Maelstrom));
+            senseobject(playerposition, typeof(Hole));
+            senseobject(playerposition, typeof(Amarok));
+            
+            void senseobject(Position playerposition,Type dangerType)
             {
-            if (playerposition.UpDown + 1 <= 4  && Grid[playerposition.UpDown + 1, playerposition.RightLeft].GetType() == typeof(Hole) ||
-                playerposition.UpDown - 1 >= 0  && Grid[playerposition.UpDown - 1, playerposition.RightLeft].GetType() == typeof(Hole) ||
-                playerposition.RightLeft + 1 <= 4 && Grid[playerposition.UpDown, playerposition.RightLeft + 1].GetType() == typeof(Hole) ||
-                 playerposition.RightLeft - 1 >= 0 && Grid[playerposition.UpDown, playerposition.RightLeft - 1].GetType() == typeof(Hole))
-            {
-                Console.WriteLine("you sense a draft nearby. Atleast one of the adjacent rooms is a hole");
-            }
 
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Something wrong with holes");
+                if (playerposition.UpDown + 1 <= 4 && Grid[playerposition.UpDown + 1, playerposition.RightLeft].GetType() == dangerType ||
+                    playerposition.UpDown - 1 >= 0 && Grid[playerposition.UpDown - 1, playerposition.RightLeft].GetType() == dangerType ||
+                    playerposition.RightLeft + 1 <= 4 && Grid[playerposition.UpDown, playerposition.RightLeft + 1].GetType() == dangerType ||
+                     playerposition.RightLeft - 1 >= 0 && Grid[playerposition.UpDown, playerposition.RightLeft - 1].GetType() == dangerType)
+                {
+                    Console.WriteLine("you sense a draft nearby. Atleast one of the adjacent rooms is a hole");
+                }
+
             }
         }
     }
