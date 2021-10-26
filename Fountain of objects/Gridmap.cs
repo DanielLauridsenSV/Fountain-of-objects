@@ -118,9 +118,9 @@ namespace Fountain_of_objects
         private void CreateEntrypoint(Position location) => Grid[location.UpDown, location.RightLeft] = new Entryroom();
         public void SenseDanger(Position playerposition)
         {
-            senseobject(playerposition, typeof(Maelstrom), "you hear a magical sound in one of the nearby room, a Maelstrom is in one of the adjacent rooms");
-            senseobject(playerposition, typeof(Hole), "you feel a draft from one of the nearby rooms, one of the adjacent rooms is a hole");
-            senseAmarok(playerposition, " you smeel the stench of the Amarok, There is an Amarok in one of the adjacent rooms");
+            senseobject(playerposition, typeof(Maelstrom), "*you hear a magical sound in one of the nearby room, a Maelstrom is in one of the adjacent rooms");
+            senseobject(playerposition, typeof(Hole), "*you feel a draft from one of the nearby rooms, one of the adjacent rooms is a hole");
+            senseAmarok(playerposition, "*you smeel the stench of the Amarok, There is an Amarok in one of the adjacent rooms");
 
             void senseobject(Position playerposition, Type dangerType, string message)
             {

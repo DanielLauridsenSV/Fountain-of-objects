@@ -28,44 +28,45 @@ namespace Fountain_of_objects
             if (updownorRightleft == 1)
             {
                 int upordown = random.Next(0, 2);
-                if (Amarokposition.UpDown<map._height && upordown > 0)
+
+                if (Amarokposition.UpDown < map._height - 1 && upordown > 0)
                 {
                     Amarokposition.UpDown++;
                 }
-                else if (Amarokposition.UpDown ==map._height && upordown>0 )
+                else if (Amarokposition.UpDown == map._height - 1 && upordown > 0)
                 {
                     Amarokposition.UpDown--;
                 }
-                else if (Amarokposition.UpDown == map._height && upordown == 0)
+                else if (Amarokposition.UpDown == 0 && upordown == 0)
                 {
                     Amarokposition.UpDown++;
                 }
-                else if (Amarokposition.UpDown > map._height && upordown ==0 )
+                else if (Amarokposition.UpDown > 0 && upordown == 0)
                 {
                     Amarokposition.UpDown--;
                 }
-              
+
             }
             else
             {
                 int Rightorleft = random.Next(0, 2);
-                if (Amarokposition.RightLeft < map._width && Rightorleft > 0)
+                if (Amarokposition.RightLeft < map._width - 1 && Rightorleft > 0)
                 {
                     Amarokposition.RightLeft++;
                 }
-                else if (Amarokposition.RightLeft == map._width && Rightorleft > 0)
+                else if (Amarokposition.RightLeft == map._width - 1 && Rightorleft > 0)
                 {
                     Amarokposition.RightLeft--;
                 }
-                else if (Amarokposition.RightLeft == map._width && Rightorleft == 0)
+                else if (Amarokposition.RightLeft == 0 && Rightorleft == 0)
                 {
                     Amarokposition.UpDown++;
                 }
-                else if (Amarokposition.RightLeft > map._width && Rightorleft == 0)
+                else if (Amarokposition.RightLeft > 0 && Rightorleft == 0)
                 {
                     Amarokposition.RightLeft--;
                 }
-               
+
             }
             map.Grid[Amarokposition.UpDown, Amarokposition.RightLeft].containsAmarok = true;
         }
