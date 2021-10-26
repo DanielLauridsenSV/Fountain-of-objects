@@ -15,8 +15,7 @@ namespace Fountain_of_objects
             {
                 Console.Clear();
                 map.VisualizeMap(player.Location);
-                map.SenseDanger(player.Location);
-                player.ChoseDirection();
+                player.ChoseDirection(map);
                 Console.Clear(); 
                 map.VisualizeMap(player.Location);
                 amarok.AmarokMovement(map);
@@ -24,7 +23,7 @@ namespace Fountain_of_objects
                 {
                     break;
                 }
-                if (map.Grid[player.Location.UpDown,player.Location.RightLeft].containsAmarok)
+                if (map.Grid[player.Location.UpDown,player.Location.RightLeft].ContainsAmarok)
                 {
                     Console.WriteLine("you step into the room and smeel the foul stench of the amarok, " +
                         "he lunges at you from the shadows and eat you");

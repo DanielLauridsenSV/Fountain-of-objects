@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Fountain_of_objects
 {
-    public class Maelstrom : Room
+    public class Maelstrom : Room,IDanger
     {
         public Maelstrom()
         {
-            _message = "Maelstrom";
-            _isOccupied = true;
+            Message = "Maelstrom";
+            IsOccupied = true;
         }
 
         public override bool EnterRoom(Gridmap map, Player player)
         {
-            _isRevealed = true;
+            IsRevealed = true;
             Console.WriteLine(" you enter the room and find a magical vortex in its center," +
                 " do you want to step into it?" +
                 "\n Y/N");

@@ -2,12 +2,12 @@
 
 namespace Fountain_of_objects
 {
-    public class Hole : Room
+    public class Hole : Room,IDanger
     {
         public Hole()
         {
-            _message = "hole";
-            _isOccupied = true;
+            Message = "hole";
+            IsOccupied = true;
         }
         /// <summary>
         /// resets game and moves player to entryposition

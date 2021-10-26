@@ -6,9 +6,9 @@ namespace Fountain_of_objects
     {
         public Empty_Room()
         {
-            _message = "An empty room";
-            _isOccupied = false;
-            _isRevealed = false;
+            Message = "An empty room";
+            IsOccupied = false;
+            IsRevealed = false;
         }
 
         public override bool EnterRoom(Gridmap map, Player player)

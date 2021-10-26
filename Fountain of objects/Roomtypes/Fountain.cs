@@ -8,10 +8,11 @@ namespace Fountain_of_objects
 {
     public class Fountain : Room
     {
+        public bool FountainActivated { get; set; }
         public Fountain()
         {
-            _message = "fountain";
-            _isOccupied = true;
+            Message = "fountain";
+            IsOccupied = true;
         }
         /// <summary>
         /// checks if player wants to active the portal, if the player accepts the game closes
@@ -25,7 +26,7 @@ namespace Fountain_of_objects
             Console.WriteLine("you found the fountain, but it seems deactivated and empty. You found a button. It is big and red, do you want to press it?Y/N");
             if (Console.ReadLine().Equals("Y", StringComparison.OrdinalIgnoreCase))
             {
-                _fountainActivated = true;
+                FountainActivated = true;
                 Console.WriteLine("you press the button and the fountain lights up. you know the fountain have been activated");
                 return true;
             }

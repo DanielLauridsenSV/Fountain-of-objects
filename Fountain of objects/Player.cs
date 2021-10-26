@@ -17,10 +17,10 @@ namespace Fountain_of_objects
         /// <summary>
         /// allows player to chose move, and checks if it is a allowed move.
         /// </summary>
-        public void ChoseDirection()
+        public void ChoseDirection(Gridmap map)
         {
-            int width = 5;
-            int height = 5;
+            int width = map.Width;
+            int height = map.Height;
 
             ConsoleKey key = Console.ReadKey().Key;
             Position movement = new Position(0, 0);
@@ -43,8 +43,11 @@ namespace Fountain_of_objects
                     break;
             }
 
-            Position newPos = new Position(Location.UpDown + movement.UpDown, Location.RightLeft + movement.RightLeft)
-if (newPos.UpDown < 0 || newPos.UpDown >= height || newPos.RightLeft < 0 || newPos.RightLeft >= width)
+            Position newPos = new Position(Location.UpDown + movement.UpDown, 
+                                           Location.RightLeft + movement.RightLeft);
+
+            if (newPos.UpDown < 0 || newPos.UpDown >= height || 
+                newPos.RightLeft < 0 || newPos.RightLeft >= width)
             {
                 Console.WriteLine("you cannot move past the edge of the map");
                 return;
@@ -54,8 +57,8 @@ if (newPos.UpDown < 0 || newPos.UpDown >= height || newPos.RightLeft < 0 || newP
             Logger.Add(new Position(Location));
         }
     }
-    }
-
 }
+
+
 
 

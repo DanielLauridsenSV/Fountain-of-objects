@@ -20,12 +20,12 @@ namespace Fountain_of_objects
         public static Position determineposition(Gridmap map)
         {
             Random random = new Random();
-            int dimension1 = random.Next(0, map._height);
-            int dimension2 = random.Next(0, map._width);
-            while (map.Grid[dimension1, dimension2]._isOccupied)
+            int dimension1 = random.Next(0, map.Height);
+            int dimension2 = random.Next(0, map.Width);
+            while (map.Grid[dimension1, dimension2].IsOccupied)
             {
-                dimension1 = random.Next(0, map._height);
-                dimension2 = random.Next(0, map._width);
+                dimension1 = random.Next(0, map.Height);
+                dimension2 = random.Next(0, map.Width);
             }
             return new Position(dimension1, dimension2);
         }

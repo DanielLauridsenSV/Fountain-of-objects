@@ -1,74 +1,68 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Fountain_of_objects
 {
-    public class Amarok
+    public class Amarok : IDanger
     {
-        Position Amarokposition { get; set; }
+        public Position Position { get; set; }
+        public string Message = " you smeel the stench of the Amarok in the room, It attacks you from the shadows and eat you";
+
         private Random random = new Random();
         public Amarok(Gridmap map, Player player)
         {
-            Amarokposition = new Position(random.Next(0, map._height), random.Next(0, map._width));
-            while (Amarokposition == player.Startingposition ||
-                map.Grid[Amarokposition.UpDown, Amarokposition.RightLeft].GetType() == typeof(Fountain))
+            Position = new Position(random.Next(0, map.Height), random.Next(0, map.Width));
+            while (Position == player.Startingposition ||
+                map.Grid[Position.UpDown, Position.RightLeft].GetType() == typeof(Fountain))
             {
-                Amarokposition.UpDown = (random.Next(0, map._height));
-                Amarokposition.RightLeft = (random.Next(0, map._width));
+                Position.UpDown = (random.Next(0, map.Height));
+                Position.RightLeft = (random.Next(0, map.Width));
             }
-
         }
         public void AmarokMovement(Gridmap map)
         {
-            map.Grid[Amarokposition.UpDown, Amarokposition.RightLeft].containsAmarok = false;
-            int updownorRightleft = random.Next(0, 2);
-            if (updownorRightleft == 1)
+            int height = map.Height;
+            int width = map.Width;
+
+            int key = random.Next(0, 4);
+            Position movement = new Position(0, 0);
+            while (true)
             {
-                int upordown = random.Next(0, 2);
+                switch (key)
+                {
+                    case 0:
+                        {
+                            movement = new Position(0, -1);
+                            break;
+                        }
+                    case 1:
+                        {
+                            movement = new Position(0, 1);
+                            break;
+                        }
+                    case 2:
+                        movement = new Position(-1, 0);
+                        break;
+                    case 3:
+                        {
+                            movement = new Position(-1, 0);
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
+                Position newPos = new Position(Position.UpDown + movement.UpDown,
+                                               Position.RightLeft + movement.RightLeft);
 
-                if (Amarokposition.UpDown < map._height - 1 && upordown > 0)
+                if (newPos.UpDown < 0 || newPos.UpDown >= height ||
+                    newPos.RightLeft < 0 || newPos.RightLeft >= width)
                 {
-                    Amarokposition.UpDown++;
+                    Console.WriteLine("you cannot move past the edge of the map");
+                    return;
                 }
-                else if (Amarokposition.UpDown == map._height - 1 && upordown > 0)
-                {
-                    Amarokposition.UpDown--;
-                }
-                else if (Amarokposition.UpDown == 0 && upordown == 0)
-                {
-                    Amarokposition.UpDown++;
-                }
-                else if (Amarokposition.UpDown > 0 && upordown == 0)
-                {
-                    Amarokposition.UpDown--;
-                }
-
             }
-            else
-            {
-                int Rightorleft = random.Next(0, 2);
-                if (Amarokposition.RightLeft < map._width - 1 && Rightorleft > 0)
-                {
-                    Amarokposition.RightLeft++;
-                }
-                else if (Amarokposition.RightLeft == map._width - 1 && Rightorleft > 0)
-                {
-                    Amarokposition.RightLeft--;
-                }
-                else if (Amarokposition.RightLeft == 0 && Rightorleft == 0)
-                {
-                    Amarokposition.UpDown++;
-                }
-                else if (Amarokposition.RightLeft > 0 && Rightorleft == 0)
-                {
-                    Amarokposition.RightLeft--;
-                }
-
-            }
-            map.Grid[Amarokposition.UpDown, Amarokposition.RightLeft].containsAmarok = true;
         }
     }
 }
