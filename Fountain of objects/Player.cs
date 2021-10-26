@@ -17,7 +17,7 @@ namespace Fountain_of_objects
         /// <summary>
         /// allows player to chose move, and checks if it is a allowed move.
         /// </summary>
-        public void Chosedirection()
+        public void ChoseDirection()
         {
 
             Console.WriteLine(" choose your path with the arrowkeys");

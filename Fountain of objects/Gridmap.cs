@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Fountain_of_objects
 {
-
+    /// <summary>
+    /// gridmap is the labyrinth in which the game is played. most properties are only used for configuration
+    /// </summary>
     public class Gridmap
     {
         public Room[,] Grid { get; set; }
@@ -29,10 +31,6 @@ namespace Fountain_of_objects
             Placement(typeof(Fountain), _numberOfFountains);
             Placement(typeof(Hole), _numberOfHoles);
             Placement(typeof(Maelstrom), _numberofmaelstroms);
-            for (int i = 0; i < _numberOfAmaroks; i++)
-            {
-
-            }
         }
         /// <summary>
         ///creates the gridmap on which the game is played.
@@ -116,6 +114,10 @@ namespace Fountain_of_objects
         /// </summary>
         /// <param name="location"></param>
         private void CreateEntrypoint(Position location) => Grid[location.UpDown, location.RightLeft] = new Entryroom();
+       /// <summary>
+       /// tells player if any adjacent rooms contains special rooms or Amarok.
+       /// </summary>
+       /// <param name="playerposition"></param>
         public void SenseDanger(Position playerposition)
         {
             senseobject(playerposition, typeof(Maelstrom), "*you hear a magical sound in one of the nearby room, a Maelstrom is in one of the adjacent rooms");

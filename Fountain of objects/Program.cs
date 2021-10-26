@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 
 namespace Fountain_of_objects
 {
@@ -17,10 +16,10 @@ namespace Fountain_of_objects
                 Console.Clear();
                 map.VisualizeMap(player.Location);
                 map.SenseDanger(player.Location);
-                player.Chosedirection();
+                player.ChoseDirection();
                 Console.Clear(); 
                 map.VisualizeMap(player.Location);
-                amarok.Amarokmovement(map);
+                amarok.AmarokMovement(map);
                 if (map.Grid[player.Location.UpDown, player.Location.RightLeft].EnterRoom(map, player))
                 {
                     break;
