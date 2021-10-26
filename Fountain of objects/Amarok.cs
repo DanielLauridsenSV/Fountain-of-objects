@@ -21,8 +21,6 @@ namespace Fountain_of_objects
             }
 
         }
-
-
         public void Amarokmovement(Gridmap map)
         {
             map.Grid[Amarokposition.UpDown, Amarokposition.RightLeft].containsAmarok = false;
