@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 namespace Fountain_of_objects
 {
     public class Amarok : IDanger
@@ -41,8 +40,10 @@ namespace Fountain_of_objects
                             break;
                         }
                     case 2:
-                        movement = new Position(-1, 0);
-                        break;
+                        {
+                            movement = new Position(-1, 0);
+                            break;
+                        }
                     case 3:
                         {
                             movement = new Position(-1, 0);
