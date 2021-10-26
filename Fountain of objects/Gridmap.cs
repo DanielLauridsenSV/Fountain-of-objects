@@ -113,11 +113,11 @@ namespace Fountain_of_objects
         private void CreateEntrypoint(Position location) => Grid[location.UpDown, location.RightLeft] = new Entryroom();
         public void SenseDanger(Position playerposition)
         {
-            senseobject(playerposition,typeof(Maelstrom));
-            senseobject(playerposition, typeof(Hole));
-            senseobject(playerposition, typeof(Amarok));
+            senseobject(playerposition,typeof(Maelstrom),"you hear a magical sound in one of the nearby room, a Maelstrom is in one of the adjacent rooms");
+            senseobject(playerposition, typeof(Hole),"you feel a draft from one of the nearby rooms, one of the adjacent rooms is a hole");
+            senseobject(playerposition, typeof(Amarok)," you smeel the stench of the Amarok, There is an Amarok in one of the adjacent rooms");
             
-            void senseobject(Position playerposition,Type dangerType)
+            void senseobject(Position playerposition,Type dangerType,string message)
             {
 
                 if (playerposition.UpDown + 1 <= 4 && Grid[playerposition.UpDown + 1, playerposition.RightLeft].GetType() == dangerType ||
@@ -125,7 +125,7 @@ namespace Fountain_of_objects
                     playerposition.RightLeft + 1 <= 4 && Grid[playerposition.UpDown, playerposition.RightLeft + 1].GetType() == dangerType ||
                      playerposition.RightLeft - 1 >= 0 && Grid[playerposition.UpDown, playerposition.RightLeft - 1].GetType() == dangerType)
                 {
-                    Console.WriteLine("you sense a draft nearby. Atleast one of the adjacent rooms is a hole");
+                    Console.WriteLine(message);
                 }
 
             }

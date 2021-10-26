@@ -14,7 +14,15 @@ namespace Fountain_of_objects
         public void Amarokmovement()
         {
            Random random = new Random();
-            random.Next(0, 1);
+            if (random.Next(0, 2)==1)
+            {
+                Amarokposition.UpDown = Amarokposition.UpDown + random.Next(-2, 2);
+            }
+            else
+            {
+                Amarokposition.RightLeft = Amarokposition.RightLeft + random.Next(-2, 2);
+            }
+
         }
     }
 }
