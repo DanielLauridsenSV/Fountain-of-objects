@@ -29,6 +29,7 @@ namespace Fountain_of_objects
                 {
                     Console.WriteLine("you step into the room and smeel the foul stench of the amarok, " +
                         "he lunges at you from the shadows and eat you");
+                    Console.ReadLine();
                     break;
                         }
                 supportclass.Sleep();
