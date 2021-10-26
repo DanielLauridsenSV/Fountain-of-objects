@@ -36,14 +36,15 @@ namespace Fountain_of_objects
                 {
                     Amarokposition.UpDown--;
                 }
-                else if (Amarokposition.UpDown > map._height && upordown ==0 )
-                {
-                    Amarokposition.UpDown--;
-                }
                 else if (Amarokposition.UpDown == map._height && upordown == 0)
                 {
                     Amarokposition.UpDown++;
                 }
+                else if (Amarokposition.UpDown > map._height && upordown ==0 )
+                {
+                    Amarokposition.UpDown--;
+                }
+              
             }
             else
             {
@@ -56,14 +57,15 @@ namespace Fountain_of_objects
                 {
                     Amarokposition.RightLeft--;
                 }
-                else if (Amarokposition.RightLeft > map._width && Rightorleft == 0)
-                {
-                    Amarokposition.RightLeft--;
-                }
                 else if (Amarokposition.RightLeft == map._width && Rightorleft == 0)
                 {
                     Amarokposition.UpDown++;
                 }
+                else if (Amarokposition.RightLeft > map._width && Rightorleft == 0)
+                {
+                    Amarokposition.RightLeft--;
+                }
+               
             }
             map.Grid[Amarokposition.UpDown, Amarokposition.RightLeft].containsAmarok = true;
         }
