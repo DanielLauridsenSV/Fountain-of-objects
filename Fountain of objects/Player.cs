@@ -19,70 +19,41 @@ namespace Fountain_of_objects
         /// </summary>
         public void ChoseDirection()
         {
+            int width = 5;
+            int height = 5;
 
-            Console.WriteLine(" choose your path with the arrowkeys");
+            ConsoleKey key = Console.ReadKey().Key;
+            Position movement = new Position(0, 0);
 
-            ConsoleKey movement = Console.ReadKey().Key;
-            switch (movement)
+            switch (key)
             {
                 case ConsoleKey.UpArrow:
-                    {
-                        if (Location.UpDown - 1 >= 0)
-                        {
-                            Location.UpDown = Location.UpDown - 1;
-                            Logger.Add(new Position(Location));
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("you cannot move past the edge of the map");
-                            break;
-                        }
-                    }
+                    movement = new Position(0, -1);
+                    break;
                 case ConsoleKey.DownArrow:
-                    {
-                        if (Location.UpDown + 1 <= 4)
-                        {
-                            Location.UpDown = Location.UpDown + 1;
-                            Logger.Add(new Position(Location));
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("you cannot move past the edge of the map");
-                            break;
-                        }
-                    }
+                    movement = new Position(0, 1);
+                    break;
                 case ConsoleKey.LeftArrow:
-                    {
-                        if (Location.RightLeft - 1 >= 0)
-                        {
-                            Location.RightLeft = Location.RightLeft - 1;
-                            Logger.Add(new Position(Location));
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("you cannot move past the edge of the map");
-                            break;
-                        }
-                    }
+                    movement = new Position(-1, 0);
+                    break;
                 case ConsoleKey.RightArrow:
-                    {
-                        if (Location.RightLeft + 1 <= 4)
-                        {
-                            Location.RightLeft = Location.RightLeft + 1;
-                            Logger.Add(new Position(Location));
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("you cannot move past the edge of the map");
-                            break;
-                        }
-                    }
+                    movement = new Position(-1, 0);
+                    break;
+                default:
+                    break;
             }
+
+            Position newPos = new Position(Location.UpDown + movement.UpDown, Location.RightLeft + movement.RightLeft)
+if (newPos.UpDown < 0 || newPos.UpDown >= height || newPos.RightLeft < 0 || newPos.RightLeft >= width)
+            {
+                Console.WriteLine("you cannot move past the edge of the map");
+                return;
+            }
+
+            Location = newPos;
+            Logger.Add(new Position(Location));
         }
+    }
     }
 
 }
