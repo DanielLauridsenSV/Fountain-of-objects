@@ -15,6 +15,7 @@ namespace Fountain_of_objects
         private readonly int _numberOfHoles = 6;
         private readonly int _numberOfFountains = 1;
         private readonly int _numberofmaelstroms = 2;
+        public readonly int _numberOfAmaroks = 1;
         private Random rand = new();
 
         /// <summary>
@@ -28,6 +29,10 @@ namespace Fountain_of_objects
             Placement(typeof(Fountain), _numberOfFountains);
             Placement(typeof(Hole), _numberOfHoles);
             Placement(typeof(Maelstrom), _numberofmaelstroms);
+            for (int i = 0; i < _numberOfAmaroks; i++)
+            {
+
+            }
         }
         /// <summary>
         ///creates the gridmap on which the game is played.
