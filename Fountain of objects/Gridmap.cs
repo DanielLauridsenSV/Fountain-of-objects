@@ -10,9 +10,9 @@ namespace Fountain_of_objects
     public class Gridmap
     {
         public Room[,] Grid { get; set; }
-        public readonly int _height  = 5;
-        public readonly int _width  = 5;
-        private readonly int _numberOfHoles  = 6;
+        public readonly int _height = 5;
+        public readonly int _width = 5;
+        private readonly int _numberOfHoles = 6;
         private readonly int _numberOfFountains = 1;
         private readonly int _numberofmaelstroms = 2;
         private Random rand = new();
@@ -34,7 +34,7 @@ namespace Fountain_of_objects
         /// </summary>
         private void CreateGrid()
         {
-           Grid = new Room [_height, _width];
+            Grid = new Room[_height, _width];
             for (int i = 0; i < _height; i++)
             {
                 for (int j = 0; j < _width; j++)
@@ -50,17 +50,17 @@ namespace Fountain_of_objects
         /// <param name="amount"></param>
         private void Placement(Type eventType, int amount)
         {
-            Position position = new(0,0);
+            Position position = new(0, 0);
             position.UpDown = rand.Next(0, _height);
             position.RightLeft = rand.Next(0, _width);
             for (int i = 0; i < amount; i++)
             {
-                while (Grid[position.UpDown,position.RightLeft]._isOccupied)
+                while (Grid[position.UpDown, position.RightLeft]._isOccupied)
                 {
                     position.UpDown = rand.Next(0, 5);
                     position.RightLeft = rand.Next(0, 5);
                 }
-                Grid[position.UpDown, position.RightLeft] =(Room)Activator.CreateInstance(eventType);
+                Grid[position.UpDown, position.RightLeft] = (Room)Activator.CreateInstance(eventType);
             }
         }
         /// <summary>
@@ -111,6 +111,16 @@ namespace Fountain_of_objects
         /// </summary>
         /// <param name="location"></param>
         private void CreateEntrypoint(Position location) => Grid[location.UpDown, location.RightLeft] = new Entryroom();
+        public void Senseholes(Position playerposition)
+        {
+           //if (Grid[playerposition.UpDown + 1, playerposition.RightLeft].GetType() == typeof(Hole) && playerposition.UpDown+1 <=5||
+           //     Grid[playerposition.UpDown - 1, playerposition.RightLeft].GetType() == typeof(Hole) && playerposition.UpDown - 1 >= 0 ||
+           //     Grid[playerposition.UpDown, playerposition.RightLeft + 1].GetType() == typeof(Hole) && playerposition.RightLeft + 1 <= 5 ||
+                Grid[playerposition.UpDown, playerposition.RightLeft - 1].GetType() == typeof(Hole) && playerposition.RightLeft -1 >= 0)
+            {
+                Console.WriteLine("you sense a draft nearby. Atleast one of the adjacent rooms is a hole");
+            }
+        }
     }
 }
 

@@ -14,6 +14,7 @@ namespace Fountain_of_objects
             {
                 Console.Clear();
                 map.VisualizeMap(player.Location);
+                map.Senseholes(player.Location);
                 player.Chosedirection();
                 Console.Clear(); 
                 map.VisualizeMap(player.Location);
