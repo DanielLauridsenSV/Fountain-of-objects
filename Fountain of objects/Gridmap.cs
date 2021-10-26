@@ -111,7 +111,7 @@ namespace Fountain_of_objects
         /// </summary>
         /// <param name="location"></param>
         private void CreateEntrypoint(Position location) => Grid[location.UpDown, location.RightLeft] = new Entryroom();
-        public void Senseholes(Position playerposition)
+        public void SenseDanger(Position playerposition)
         {
            //if (Grid[playerposition.UpDown + 1, playerposition.RightLeft].GetType() == typeof(Hole) && playerposition.UpDown+1 <=5||
            //     Grid[playerposition.UpDown - 1, playerposition.RightLeft].GetType() == typeof(Hole) && playerposition.UpDown - 1 >= 0 ||
