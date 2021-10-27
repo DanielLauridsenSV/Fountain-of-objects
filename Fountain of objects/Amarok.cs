@@ -20,11 +20,11 @@ namespace Fountain_of_objects
             }
         }
         public void AmarokMovement(Gridmap map)
+
         {
-            map.Gridroom(Position).ContainsAmarok = false;
             int height = map.Height;
             int width = map.Width;
-
+            map.Grid[Position.UpDown,Position.RightLeft].ContainsAmarok = false;
 
             Position movement = new Position(0, 0);
             while (true)
@@ -57,8 +57,8 @@ namespace Fountain_of_objects
                 Position newPos = new Position(Position.UpDown + movement.UpDown,
                                                Position.RightLeft + movement.RightLeft);
 
-                if (newPos.UpDown < 0 || newPos.UpDown > height ||
-                    newPos.RightLeft < 0 || newPos.RightLeft > width)
+                if (newPos.UpDown < 0 || newPos.UpDown >= height ||
+                    newPos.RightLeft < 0 || newPos.RightLeft >= width)
                 {
                     movement.UpDown = 0;
                     movement.RightLeft = 0;
@@ -66,7 +66,7 @@ namespace Fountain_of_objects
                 }
                 else
                 {
-                    map.Gridroom(Position).ContainsAmarok = true;
+                    map.Grid[Position.UpDown,Position.RightLeft].ContainsAmarok = true;
                     Position = newPos;
                     break;
                 }
