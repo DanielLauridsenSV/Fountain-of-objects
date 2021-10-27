@@ -55,14 +55,14 @@ namespace Fountain_of_objects
         private void Placement(Type eventType, int amount)
         {
             Position position = new(0, 0);
-            position.UpDown = rand.Next(0, Height);
-            position.RightLeft = rand.Next(0, Width);
+            position.UpDown = _rand.Next(0, Height);
+            position.RightLeft = _rand.Next(0, Width);
             for (int i = 0; i < amount; i++)
             {
                 while (GridRoom(position).IsOccupied)
                 {
-                    position.UpDown = rand.Next(0, 5);
-                    position.RightLeft = rand.Next(0, 5);
+                    position.UpDown = _rand.Next(0, 5);
+                    position.RightLeft = _rand.Next(0, 5);
                 }
                 Grid[position.UpDown,position.RightLeft] = (Room)Activator.CreateInstance(eventType);
             }
