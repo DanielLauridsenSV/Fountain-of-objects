@@ -2,6 +2,9 @@
 
 namespace Fountain_of_objects
 {
+    /// <summary>
+    ///  the Amarok is a wandering Enemy, it works like the player class and is not a roomtype. If the player encounters the Amarok the game is over,
+    /// </summary>
     public class Amarok : IDanger
     {
         public Position Position { get; set; }

@@ -45,7 +45,7 @@ namespace Fountain_of_objects
             }
         }
         /// <summary>
-        /// places objects in the gridmap
+        /// places objects on the gridmap
         /// </summary>
         /// <param name="eventType"></param>
         /// <param name="amount"></param>
@@ -101,6 +101,11 @@ namespace Fountain_of_objects
             }
         }
 
+        /// <summary>
+        /// tells the player if the adjacent room(all 8 directions) contain a specialroom or Amarok
+        /// </summary>
+        /// <param name="playerposition"></param>
+        /// <param name="Amarok"></param>
         public void SenseDanger(Position playerposition, Amarok Amarok)
         {
             int width = Width;
