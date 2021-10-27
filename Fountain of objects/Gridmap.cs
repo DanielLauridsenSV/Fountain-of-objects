@@ -104,22 +104,7 @@ namespace Fountain_of_objects
             }
         }
 
-        /// <summary>
-        /// makes the room at players position revealed and thus able to display message
-        /// </summary>
-        /// <param name="location"></param>
-        public void MakePositionVisible(Position location) => Grid[location.UpDown, location.RightLeft].IsRevealed = true;
-        /// <summary>
-        /// creates the entryroom at specified location.
-        /// </summary>
-        /// <param name="location"></param>
-        private void CreateEntrypoint(Position location) => Grid[location.UpDown, location.RightLeft] = new Entryroom();
-        /// <summary>
-        /// tells player if any adjacent rooms contains special rooms or Amarok.
-        /// </summary>
-        /// <param name="playerposition"></param>
-
-        public void SenseDanger(Gridmap map, Position playerposition, Type dangertype, Amarok Amarok)
+        public void SenseDanger(Gridmap map, Position playerposition, Amarok Amarok)
         {
             int width = map.Width;
             int height = map.Height;
@@ -145,14 +130,14 @@ namespace Fountain_of_objects
                     continue;
                 }
 
-                if (Grid[pos.UpDown, pos.RightLeft].GetType() != typeof(IDanger))
+                if (Gridroom(pos).GetType() != typeof(IDanger))
                 {
                     continue;
                 }
 
                 else
                 {
-                    Console.WriteLine(map.Grid[pos.UpDown, pos.RightLeft].Message);
+                    Console.WriteLine(Gridroom(pos).Message);
 
                     if (pos == Amarok.Position)
                     {
@@ -161,6 +146,22 @@ namespace Fountain_of_objects
                 }
             }
         }
+
+        /// <summary>
+        /// makes the room at players position revealed and thus able to display message
+        /// </summary>
+        /// <param name="location"></param>
+        public void MakePositionVisible(Position location) => Grid[location.UpDown, location.RightLeft].IsRevealed = true;
+        /// <summary>
+        /// creates the entryroom at specified location.
+        /// </summary>
+        /// <param name="location"></param>
+        private void CreateEntrypoint(Position location) => Grid[location.UpDown, location.RightLeft] = new Entryroom();
+        /// <summary>
+        /// tells player if any adjacent rooms contains special rooms or Amarok.
+        /// </summary>
+        /// <param name="playerposition"></param>
+        public Room Gridroom(Position Position) => Grid[Position.UpDown, Position.RightLeft];
     }
 }
 

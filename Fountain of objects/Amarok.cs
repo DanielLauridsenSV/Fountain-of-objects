@@ -12,7 +12,7 @@ namespace Fountain_of_objects
         {
             Position = new Position(random.Next(0, map.Height), random.Next(0, map.Width));
             while (Position == player.Startingposition ||
-                map.Grid[Position.UpDown, Position.RightLeft].GetType() == typeof(Fountain))
+                map.Gridroom(Position).GetType() == typeof(Fountain))
             {
                 Position.UpDown = (random.Next(0, map.Height));
                 Position.RightLeft = (random.Next(0, map.Width));
