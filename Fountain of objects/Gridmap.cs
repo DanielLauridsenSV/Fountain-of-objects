@@ -143,7 +143,7 @@ namespace Fountain_of_objects
             }
             foreach (var item in msg.Distinct())
             {
-                Console.WriteLine(item);
+                Console.WriteLine($"*{item}");
             }
         }
 
