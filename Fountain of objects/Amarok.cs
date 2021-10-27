@@ -11,6 +11,7 @@ namespace Fountain_of_objects
         public Amarok(Gridmap map, Player player)
         {
             Position = new Position(random.Next(0, map.Height), random.Next(0, map.Width));
+
             while (Position == player.Startingposition ||
                 map.Gridroom(Position).GetType() == typeof(Fountain))
             {
@@ -31,23 +32,19 @@ namespace Fountain_of_objects
                 {
                     case 0:
                         {
-                            movement = new Position(0, -1);
-                            break;
+                            movement = new Position(0, -1);break;
                         }
                     case 1:
                         {
-                            movement = new Position(0, 1);
-                            break;
+                            movement = new Position(0, 1);break;
                         }
                     case 2:
                         {
-                            movement = new Position(-1, 0);
-                            break;
+                            movement = new Position(-1, 0);break;
                         }
                     case 3:
                         {
-                            movement = new Position(-1, 0);
-                            break;
+                            movement = new Position(-1, 0);break;
                         }
                     default:
                         {
