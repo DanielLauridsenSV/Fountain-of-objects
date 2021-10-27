@@ -11,6 +11,12 @@ namespace Fountain_of_objects
             Gridmap map = new();
             map.ResetMap(player);
             Amarok amarok = new (map, player);
+            Console.WriteLine("welcome to the labyrinth of the fountain.\n\nyou play the game by walking around in the maze looking for the fountain. " +
+                "\nbut, with in the Maze there are holes, MAelstromportals and the Deadly Amarok.\nyour senses will tell you if you are near any dangers.");
+            Console.WriteLine("you use the Arrowkeys to move");
+            Console.WriteLine("press enter to start the game");
+            Console.ReadLine();
+         
             while (true)
             {
                 Console.Clear();
