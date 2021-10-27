@@ -24,5 +24,11 @@ namespace Fountain_of_objects
             player.Location = reset;
             return false;
         }
+
+        public string Warningmessage()
+        {
+            string msg = "you hear the a breeze from one of the nearby rooms, there is a hole in one of the adjacent rooms";
+                return msg;
+        }
     }
 }

@@ -34,6 +34,13 @@ namespace Fountain_of_objects
 
             return false;
         }
+
+        public string Warningmessage()
+        {
+            string msg = "you sense Immense magical power, There is a Maelstrom in one of the adjacent rooms";
+                return msg;
+        }
+
         private Position Maelstromportal(Gridmap map)
         {
             Position playerposition = supportclass.determineposition(map);

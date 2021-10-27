@@ -8,5 +8,6 @@ namespace Fountain_of_objects
 {
     public interface IDanger
     {
+        public string Warningmessage();
     }
 }

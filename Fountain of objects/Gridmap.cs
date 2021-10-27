@@ -104,10 +104,10 @@ namespace Fountain_of_objects
             }
         }
 
-        public void SenseDanger(Gridmap map, Position playerposition, Amarok Amarok)
+        public void SenseDanger(Position playerposition, Amarok Amarok)
         {
-            int width = map.Width;
-            int height = map.Height;
+            int width = Width;
+            int height = Height;
             List<Position> toSearch = new()
             {
                 new Position(1, 0),
@@ -130,19 +130,15 @@ namespace Fountain_of_objects
                     continue;
                 }
 
-                if (Gridroom(pos).GetType() != typeof(IDanger))
+                if (Gridroom(pos) is IDanger || Gridroom(Amarok.Position).ContainsAmarok)
                 {
-                    continue;
-                }
-
-                else
-                {
-                    Console.WriteLine(Gridroom(pos).Message);
-
-                    if (pos == Amarok.Position)
+                    IDanger danger = (IDanger)Gridroom(pos);
+                    string msg = danger.Warningmessage();
+                    if (Gridroom(Amarok.Position).ContainsAmarok)
                     {
-                        Console.WriteLine(Amarok.Message);
+                        msg = Amarok.Warningmessage();
                     }
+                    Console.WriteLine(msg);
                 }
             }
         }

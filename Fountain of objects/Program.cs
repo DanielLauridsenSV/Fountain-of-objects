@@ -15,6 +15,7 @@ namespace Fountain_of_objects
             {
                 Console.Clear();
                 map.VisualizeMap(player.Location);
+                map.SenseDanger(player.Location,amarok);
                 player.ChoseDirection(map);
                 Console.Clear(); 
                 map.VisualizeMap(player.Location);

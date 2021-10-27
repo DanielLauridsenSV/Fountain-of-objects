@@ -28,16 +28,16 @@ namespace Fountain_of_objects
             switch (key)
             {
                 case ConsoleKey.UpArrow:
-                    movement = new Position(0, -1);
+                    movement = new Position(-1,0 );
                     break;
                 case ConsoleKey.DownArrow:
-                    movement = new Position(0, 1);
+                    movement = new Position(+1, 0);
                     break;
                 case ConsoleKey.LeftArrow:
-                    movement = new Position(-1, 0);
+                    movement = new Position(0, -1);
                     break;
                 case ConsoleKey.RightArrow:
-                    movement = new Position(-1, 0);
+                    movement = new Position(0, +1);
                     break;
                 default:
                     break;
@@ -49,7 +49,7 @@ namespace Fountain_of_objects
             if (newPos.UpDown < 0 || newPos.UpDown >= height || 
                 newPos.RightLeft < 0 || newPos.RightLeft >= width)
             {
-                Console.WriteLine("you cannot move past the edge of the map");
+                Console.WriteLine("you cannot move past player the edge of the map");
                 return;
             }
 

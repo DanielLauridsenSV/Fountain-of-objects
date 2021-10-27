@@ -21,30 +21,33 @@ namespace Fountain_of_objects
         }
         public void AmarokMovement(Gridmap map)
         {
+            map.Gridroom(Position).ContainsAmarok = false;
             int height = map.Height;
             int width = map.Width;
 
-            int key = random.Next(0, 4);
+
             Position movement = new Position(0, 0);
             while (true)
             {
+                int key = random.Next(0, 4);
+
                 switch (key)
                 {
                     case 0:
                         {
-                            movement = new Position(0, -1);break;
+                            movement = new Position(0, -1); break;
                         }
                     case 1:
                         {
-                            movement = new Position(0, 1);break;
+                            movement = new Position(0, 1); break;
                         }
                     case 2:
                         {
-                            movement = new Position(-1, 0);break;
+                            movement = new Position(-1, 0); break;
                         }
                     case 3:
                         {
-                            movement = new Position(-1, 0);break;
+                            movement = new Position(1, 0); break;
                         }
                     default:
                         {
@@ -54,13 +57,27 @@ namespace Fountain_of_objects
                 Position newPos = new Position(Position.UpDown + movement.UpDown,
                                                Position.RightLeft + movement.RightLeft);
 
-                if (newPos.UpDown < 0 || newPos.UpDown >= height ||
-                    newPos.RightLeft < 0 || newPos.RightLeft >= width)
+                if (newPos.UpDown < 0 || newPos.UpDown > height ||
+                    newPos.RightLeft < 0 || newPos.RightLeft > width)
                 {
-                    Console.WriteLine("you cannot move past the edge of the map");
-                    return;
+                    movement.UpDown = 0;
+                    movement.RightLeft = 0;
+                    continue;
                 }
+                else
+                {
+                    map.Gridroom(Position).ContainsAmarok = true;
+                    Position = newPos;
+                    break;
+                }
+
             }
+        }
+
+        public string Warningmessage()
+        {
+            string msg = "you smell the foul stench of the Amarok, there is an Amarok in one of the adjacent rooms";
+            return msg;
         }
     }
 }
