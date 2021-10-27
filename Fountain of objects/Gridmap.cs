@@ -17,21 +17,21 @@ namespace Fountain_of_objects
         public int Width { get; set; } = 5;
         private int _numberOfHoles = 6;
         private int _numberOfFountains = 1;
-        private int _numberofmaelstroms = 2;
+        private int _numberOfMaelstroms = 2;
         public int _numberOfAmaroks = 1;
-        private Random rand = new();
+        private Random _rand = new();
 
         /// <summary>
         /// create the map and places objects on the map. 
         /// </summary>
         /// <param name="player"></param>
-        public void Resetmap(Player player)
+        public void ResetMap(Player player)
         {
             CreateGrid();
-            CreateEntrypoint(player.Startingposition);
+            CreateEntrypoint(player.StartingPosition);
             Placement(typeof(Fountain), _numberOfFountains);
             Placement(typeof(Hole), _numberOfHoles);
-            Placement(typeof(Maelstrom), _numberofmaelstroms);
+            Placement(typeof(Maelstrom), _numberOfMaelstroms);
         }
         /// <summary>
         ///creates the gridmap on which the game is played.
@@ -59,7 +59,7 @@ namespace Fountain_of_objects
             position.RightLeft = rand.Next(0, Width);
             for (int i = 0; i < amount; i++)
             {
-                while (Gridroom(position).IsOccupied)
+                while (GridRoom(position).IsOccupied)
                 {
                     position.UpDown = rand.Next(0, 5);
                     position.RightLeft = rand.Next(0, 5);
@@ -129,16 +129,16 @@ namespace Fountain_of_objects
                 {
                     continue;
                 }
-                if (Gridroom(pos) is IDanger)
+                if (GridRoom(pos) is IDanger)
                 {
-                    IDanger danger = (IDanger)Gridroom(pos);
-                     msg.Add(danger.Warningmessage());
+                    IDanger danger = (IDanger)GridRoom(pos);
+                     msg.Add(danger.WarningMessage());
 
 
                 }
-                else if (Gridroom(pos).ContainsAmarok)
+                else if (GridRoom(pos).ContainsAmarok)
                 {
-                     msg.Add(Amarok.Warningmessage());
+                     msg.Add(Amarok.WarningMessage());
                 } 
             }
             foreach (var item in msg.Distinct())
@@ -151,7 +151,7 @@ namespace Fountain_of_objects
         /// makes the room at players position revealed and thus able to display message
         /// </summary>
         /// <param name="location"></param>
-        public void MakePositionVisible(Position location) => Gridroom(location).IsRevealed = true;
+        public void MakePositionVisible(Position location) => GridRoom(location).IsRevealed = true;
         /// <summary>
         /// creates the entryroom at specified location.
         /// </summary>
@@ -160,7 +160,7 @@ namespace Fountain_of_objects
         
         /// </summary>
         /// <param name="playerposition"></param>
-        public Room Gridroom(Position Position) => Grid[Position.UpDown, Position.RightLeft];
+        public Room GridRoom(Position Position) => Grid[Position.UpDown, Position.RightLeft];
     }
 }
 

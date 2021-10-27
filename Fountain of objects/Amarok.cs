@@ -7,16 +7,16 @@ namespace Fountain_of_objects
         public Position Position { get; set; }
         public string Message = " you smeel the stench of the Amarok in the room, It attacks you from the shadows and eat you";
 
-        private Random random = new Random();
+        private Random _random = new Random();
         public Amarok(Gridmap map, Player player)
         {
-            Position = new Position(random.Next(0, map.Height), random.Next(0, map.Width));
+            Position = new Position(_random.Next(0, map.Height), _random.Next(0, map.Width));
 
-            while (Position == player.Startingposition ||
-                map.Gridroom(Position).GetType() == typeof(Fountain))
+            while (Position == player.StartingPosition ||
+                map.GridRoom(Position).GetType() == typeof(Fountain))
             {
-                Position.UpDown = (random.Next(0, map.Height));
-                Position.RightLeft = (random.Next(0, map.Width));
+                Position.UpDown = (_random.Next(0, map.Height));
+                Position.RightLeft = (_random.Next(0, map.Width));
             }
         }
         public void AmarokMovement(Gridmap map)
@@ -24,12 +24,12 @@ namespace Fountain_of_objects
         {
             int height = map.Height;
             int width = map.Width;
-            map.Gridroom(Position).ContainsAmarok = false;
+            map.GridRoom(Position).ContainsAmarok = false;
 
             Position movement = new Position(0, 0);
             while (true)
             {
-                int key = random.Next(0, 4);
+                int key = _random.Next(0, 4);
 
                 switch (key)
                 {
@@ -66,7 +66,7 @@ namespace Fountain_of_objects
                 }
                 else
                 {
-                    map.Gridroom(newPos).ContainsAmarok = true;
+                    map.GridRoom(newPos).ContainsAmarok = true;
                     Position = newPos;
                     break;
                 }
@@ -74,7 +74,7 @@ namespace Fountain_of_objects
             }
         }
 
-        public string Warningmessage()
+        public string WarningMessage()
         {
             string msg = "you smell the foul stench of the Amarok, there is an Amarok in one of the adjacent rooms";
             return msg;

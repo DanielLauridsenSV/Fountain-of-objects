@@ -11,7 +11,7 @@ namespace Fountain_of_objects
         public bool FountainActivated { get; set; }
         public Fountain()
         {
-            Message = "fountain";
+            Message = "Fountain";
             IsOccupied = true;
         }
         /// <summary>
@@ -23,7 +23,7 @@ namespace Fountain_of_objects
         public override bool EnterRoom(Gridmap map,Player player)
         {
            
-            Console.WriteLine("you found the fountain, but it seems deactivated and empty. You found a button. It is big and red, do you want to press it?Y/N");
+            Console.WriteLine("you found the fountain, but it seems deactivated and empty. You found a button. It is big and red, do you want to press it?\nY/N");
             if (Console.ReadLine().Equals("Y", StringComparison.OrdinalIgnoreCase))
             {
                 FountainActivated = true;

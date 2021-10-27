@@ -6,7 +6,7 @@ namespace Fountain_of_objects
     {
         public Entryroom()
         {
-            Message = "entry";
+            Message = "Entry";
             IsOccupied = true;
             IsRevealed = true;
         }

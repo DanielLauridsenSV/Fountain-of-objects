@@ -5,12 +5,12 @@ namespace Fountain_of_objects
 {
     public class Player
     {
-        public readonly Position Startingposition = new(4, 2);
+        public  Position StartingPosition = new(4, 2);
         public Position Location { get; set; }
         public List<Position> Logger { get; set; }
         public Player()
         {
-            Location = new(Startingposition.UpDown, Startingposition.RightLeft);
+            Location = new(StartingPosition.UpDown, StartingPosition.RightLeft);
             Logger = new();
             Logger.Add(Location);
         }

@@ -24,7 +24,7 @@ namespace Fountain_of_objects
             {
               
                 Console.WriteLine(" you step into the vortex and is transported to another place on the map");
-                player.Location = Maelstromportal(map);
+                player.Location = MaelstromPortal(map);
             }
             else
             {
@@ -35,13 +35,13 @@ namespace Fountain_of_objects
             return false;
         }
 
-        public string Warningmessage()
+        public string WarningMessage()
         {
             string msg = "you sense Immense magical power, There is a Maelstrom in one of the adjacent rooms";
                 return msg;
         }
 
-        private Position Maelstromportal(Gridmap map)
+        private Position MaelstromPortal(Gridmap map)
         {
             Position playerposition = supportclass.determineposition(map);
             return playerposition;

@@ -9,7 +9,7 @@ namespace Fountain_of_objects
             
             Player player = new();
             Gridmap map = new();
-            map.Resetmap(player);
+            map.ResetMap(player);
             Amarok amarok = new (map, player);
             while (true)
             {
@@ -20,11 +20,11 @@ namespace Fountain_of_objects
                 Console.Clear(); 
                 map.VisualizeMap(player.Location);
                 amarok.AmarokMovement(map);
-                if (map.Gridroom(player.Location).EnterRoom(map, player))
+                if (map.GridRoom(player.Location).EnterRoom(map, player))
                 {
                     break;
                 }
-                if (map.Gridroom(player.Location).ContainsAmarok)
+                if (map.GridRoom(player.Location).ContainsAmarok)
                 {
                     Console.WriteLine("you step into the room and smeel the foul stench of the amarok, " +
                         "he lunges at you from the shadows and eat you");
