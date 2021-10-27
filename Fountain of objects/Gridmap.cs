@@ -119,7 +119,7 @@ namespace Fountain_of_objects
                 new Position(1, -1),
                 new Position(-1, 1)
             };
-            string msg = "";
+            List<String> msg = new();
             foreach (Position p in toSearch)
             {
                 Position pos = new Position(playerposition.UpDown + p.UpDown,
@@ -132,16 +132,19 @@ namespace Fountain_of_objects
                 if (Gridroom(pos) is IDanger)
                 {
                     IDanger danger = (IDanger)Gridroom(pos);
-                     msg+= "\n*"+ danger.Warningmessage();
+                     msg.Add(danger.Warningmessage());
 
 
                 }
                 else if (Gridroom(pos).ContainsAmarok)
                 {
-                     msg +="\n*"+ Amarok.Warningmessage();
+                     msg.Add(Amarok.Warningmessage());
                 } 
             }
-            Console.WriteLine(msg);
+            foreach (var item in msg.Distinct())
+            {
+                Console.WriteLine(item);
+            }
         }
 
         /// <summary>
