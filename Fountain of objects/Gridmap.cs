@@ -151,14 +151,13 @@ namespace Fountain_of_objects
         /// makes the room at players position revealed and thus able to display message
         /// </summary>
         /// <param name="location"></param>
-        public void MakePositionVisible(Position location) => Grid[location.UpDown, location.RightLeft].IsRevealed = true;
+        public void MakePositionVisible(Position location) => Gridroom(location).IsRevealed = true;
         /// <summary>
         /// creates the entryroom at specified location.
         /// </summary>
         /// <param name="location"></param>
-        private void CreateEntrypoint(Position location) => Grid[location.UpDown, location.RightLeft] = new Entryroom();
-        /// <summary>
-        /// tells player if any adjacent rooms contains special rooms or Amarok.
+        private void CreateEntrypoint(Position location) => Grid[location.UpDown,location.RightLeft] = new Entryroom();
+        
         /// </summary>
         /// <param name="playerposition"></param>
         public Room Gridroom(Position Position) => Grid[Position.UpDown, Position.RightLeft];

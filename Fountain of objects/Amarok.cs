@@ -66,7 +66,7 @@ namespace Fountain_of_objects
                 }
                 else
                 {
-                    map.Grid[Position.UpDown,Position.RightLeft].ContainsAmarok = true;
+                    map.Gridroom(newPos).ContainsAmarok = true;
                     Position = newPos;
                     break;
                 }
