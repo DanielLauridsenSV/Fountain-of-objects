@@ -24,7 +24,7 @@ namespace Fountain_of_objects
         {
             int height = map.Height;
             int width = map.Width;
-            map.Grid[Position.UpDown,Position.RightLeft].ContainsAmarok = false;
+            map.Gridroom(Position).ContainsAmarok = false;
 
             Position movement = new Position(0, 0);
             while (true)

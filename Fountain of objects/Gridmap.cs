@@ -59,12 +59,12 @@ namespace Fountain_of_objects
             position.RightLeft = rand.Next(0, Width);
             for (int i = 0; i < amount; i++)
             {
-                while (Grid[position.UpDown, position.RightLeft].IsOccupied)
+                while (Gridroom(position).IsOccupied)
                 {
                     position.UpDown = rand.Next(0, 5);
                     position.RightLeft = rand.Next(0, 5);
                 }
-                Grid[position.UpDown, position.RightLeft] = (Room)Activator.CreateInstance(eventType);
+                Grid[position.UpDown,position.RightLeft] = (Room)Activator.CreateInstance(eventType);
             }
         }
         /// <summary>
@@ -156,7 +156,7 @@ namespace Fountain_of_objects
         /// creates the entryroom at specified location.
         /// </summary>
         /// <param name="location"></param>
-        private void CreateEntrypoint(Position location) => Grid[location.UpDown,location.RightLeft] = new Entryroom();
+        private void CreateEntrypoint(Position location) => Grid[location.UpDown,location.RightLeft] =new Entryroom();
         
         /// </summary>
         /// <param name="playerposition"></param>
