@@ -9,7 +9,7 @@ namespace Fountain_of_objects
     /// </summary>
     public class Gridmap
     {
-        public Room[,] Grid { get; set; }
+        public RoomsGrid Grid;
         public int Height { get; set; } = 5;
         public int Width { get; set; } = 5;
         private int _numberOfHoles = 6;
@@ -35,12 +35,13 @@ namespace Fountain_of_objects
         /// </summary>
         private void CreateGrid()
         {
-            Grid = new Room[Height, Width];
+            Grid = new RoomsGrid( new Position(Height,Width));
+           
             for (int i = 0; i < Height; i++)
             {
                 for (int j = 0; j < Width; j++)
                 {
-                    Grid[i, j] = new Empty_Room();
+                    Grid.Addvalue(new Position(i, j), new Empty_Room());
                 }
             }
         }
@@ -56,12 +57,12 @@ namespace Fountain_of_objects
             position.RightLeft = _rand.Next(0, Width);
             for (int i = 0; i < amount; i++)
             {
-                while (GridRoom(position).IsOccupied)
+                while (Grid.GetRoom(position).IsOccupied)
                 {
                     position.UpDown = _rand.Next(0, 5);
                     position.RightLeft = _rand.Next(0, 5);
                 }
-                Grid[position.UpDown,position.RightLeft] = (Room)Activator.CreateInstance(eventType);
+                Grid.Addvalue(position, (Room)Activator.CreateInstance(eventType)) ;
             }
         }
         /// <summary>
@@ -77,18 +78,18 @@ namespace Fountain_of_objects
             {
                 for (int j = 0; j < Width; j++)
                 {
-                    if (Grid[i, j].IsRevealed == true)
+                    if (Grid.GetRoom(new Position(i,j)).IsRevealed == true)
                     {
                         if (location.UpDown == i && location.RightLeft == j)
                         {
                             Console.BackgroundColor = ConsoleColor.DarkBlue;
-                            Console.Write($"{Grid[i, j].Message,-13}");
+                            Console.Write($"{Grid.GetRoom(location).Message,-13}");
                             Console.BackgroundColor = ConsoleColor.Black;
                             Console.Write("|");
                         }
                         else
                         {
-                            Console.Write($"{Grid[i, j].Message,-13}|");
+                            Console.Write($"{Grid.GetRoom(new Position(i,j)).Message,-13}|");
                         }
                     }
                     else
@@ -131,38 +132,41 @@ namespace Fountain_of_objects
                 {
                     continue;
                 }
-                if (GridRoom(pos) is IDanger)
+                if (Grid.GetRoom(pos) is IDanger)
                 {
-                    IDanger danger = (IDanger)GridRoom(pos);
-                     msg.Add(danger.WarningMessage());
+                    IDanger danger = (IDanger)Grid.GetRoom(pos);
+                    msg.Add(danger.WarningMessage());
 
 
                 }
-                else if (GridRoom(pos).ContainsAmarok)
+                else if (Grid.GetRoom(pos).ContainsAmarok)
                 {
-                     msg.Add(Amarok.WarningMessage());
-                } 
+                    msg.Add(Amarok.WarningMessage());
+                }
             }
             foreach (var item in msg.Distinct())
             {
                 Console.WriteLine($"*{item}");
             }
         }
-
         /// <summary>
         /// makes the room at players position revealed and thus able to display message
         /// </summary>
         /// <param name="location"></param>
-        public void MakePositionVisible(Position location) => GridRoom(location).IsRevealed = true;
+        public void MakePositionVisible(Position location) => Grid.GetRoom(location).IsRevealed = true;
         /// <summary>
         /// creates the entryroom at specified location.
         /// </summary>
         /// <param name="location"></param>
-        private void CreateEntrypoint(Position location) => Grid[location.UpDown,location.RightLeft] =new Entryroom();
+        private void CreateEntrypoint(Position location)
+        {
+            Grid.Addvalue(location, new Entryroom());
         
+        }
+        //}
+
         /// </summary>
         /// <param name="playerposition"></param>
-        public Room GridRoom(Position Position) => Grid[Position.UpDown, Position.RightLeft];
     }
 }
 

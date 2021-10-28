@@ -16,7 +16,7 @@ namespace Fountain_of_objects
             Position = new Position(_random.Next(0, map.Height), _random.Next(0, map.Width));
 
             while (Position == player.StartingPosition ||
-                map.GridRoom(Position).GetType() == typeof(Fountain))
+                map.Grid.GetRoom(Position).GetType() == typeof(Fountain))
             {
                 Position.UpDown = (_random.Next(0, map.Height));
                 Position.RightLeft = (_random.Next(0, map.Width));
@@ -27,7 +27,7 @@ namespace Fountain_of_objects
         {
             int height = map.Height;
             int width = map.Width;
-            map.GridRoom(Position).ContainsAmarok = false;
+            map.Grid.GetRoom(Position).ContainsAmarok = false;
 
             Position movement = new Position(0, 0);
             while (true)
@@ -69,7 +69,7 @@ namespace Fountain_of_objects
                 }
                 else
                 {
-                    map.GridRoom(newPos).ContainsAmarok = true;
+                    map.Grid.GetRoom(newPos).ContainsAmarok = true;
                     Position = newPos;
                     break;
                 }
