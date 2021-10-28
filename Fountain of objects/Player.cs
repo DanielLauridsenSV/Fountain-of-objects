@@ -53,7 +53,6 @@ namespace Fountain_of_objects
                 Console.WriteLine("you cannot move past player the edge of the map");
                 return;
             }
-
             Location = newPos;
             Logger.Add(new Position(Location));
         }
