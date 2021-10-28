@@ -8,7 +8,8 @@ namespace Fountain_of_objects
     public class Amarok
     {
         public Position Position { get; set; }
-        public static string Message = " you smeel the stench of the Amarok, There is an Amarok in on of the Adjacent Rooms";
+        public static string Message = "* you smeel the stench of the Amarok," +
+                                       " There is an Amarok in on of the Adjacent Rooms";
 
         private Random _random = new Random();
         public Amarok(Gridmap map, Player player)
