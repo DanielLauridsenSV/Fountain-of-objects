@@ -46,7 +46,6 @@ namespace Fountain_of_objects
         private void CreateGrid()
         {
             Grid = new RoomsGrid(new Position(Height, Width));
-
             for (int i = 0; i < Height; i++)
             {
                 for (int j = 0; j < Width; j++)
@@ -83,9 +82,8 @@ namespace Fountain_of_objects
         {
             MakePositionVisible(location);
             string lines = "";
-            for (int i = 0; i < Width; i++) lines += "______________";
+            for (int i = 0; i < Width; i++) { lines += "______________"; }
            
-
             Console.Write($"{lines}\n");
             for (int i = 0; i < Height; i++)
             {
@@ -101,20 +99,14 @@ namespace Fountain_of_objects
                             Console.Write("|");
                         }
                         else
-                        {
-                            Console.Write($"{Grid.GetRoom(new Position(i, j)).Message,-13}|");
-                        }
+                        { Console.Write($"{Grid.GetRoom(new Position(i, j)).Message,-13}|");}
                     }
                     else
-                    {
-                        Console.Write($"{"",-13}|");
-                    }
-
+                    {Console.Write($"{"",-13}|");}
                 }
                 Console.Write($"\n{lines}\n");
             }
         }
-
         /// <summary>
         /// tells the player if the adjacent room(all 8 directions) contain a specialroom or Amarok
         /// </summary>
@@ -135,32 +127,27 @@ namespace Fountain_of_objects
                 new Position(1, -1),
                 new Position(-1, 1)
             };
-            List<String> msg = new();
+            List<string> msg = new();
             foreach (Position p in toSearch)
             {
-                Position pos = new Position(playerposition.UpDown + p.UpDown,
-                                            playerposition.RightLeft + p.RightLeft);
+                Position pos = new Position(playerposition.UpDown + p.UpDown,playerposition.RightLeft + p.RightLeft);
+                
                 if (pos.UpDown < 0 || pos.UpDown >= height ||
                     pos.RightLeft < 0 || pos.RightLeft >= width)
-                {
-                    continue;
-                }
+                { continue;}
+
                 if (Grid.GetRoom(pos) is IDanger)
                 {
                     IDanger danger = (IDanger)Grid.GetRoom(pos);
                     msg.Add(danger.WarningMessage());
-
-
                 }
                 else if (Grid.GetRoom(pos).ContainsAmarok)
                 {
-                    msg.Add(Amarok.WarningMessage());
+                    msg.Add(Amarok.Message);
                 }
             }
             foreach (var item in msg.Distinct())
-            {
-                Console.WriteLine($"*{item}");
-            }
+            {Console.WriteLine($"*{item}");}
         }
         /// <summary>
         /// makes the room at players position revealed and thus able to display message
@@ -171,15 +158,8 @@ namespace Fountain_of_objects
         /// creates the entryroom at specified location.
         /// </summary>
         /// <param name="location"></param>
-        private void CreateEntrypoint(Position location)
-        {
-            Grid.Addvalue(location, new Entryroom());
+        private void CreateEntrypoint(Position location)=> Grid.Addvalue(location, new Entryroom());
 
-        }
-        //}
-
-        /// </summary>
-        /// <param name="playerposition"></param>
     }
 }
 

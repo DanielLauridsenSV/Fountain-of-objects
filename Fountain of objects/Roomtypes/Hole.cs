@@ -24,7 +24,6 @@ namespace Fountain_of_objects
             player.Location = reset;
             return false;
         }
-
         public string WarningMessage()
         {
             string msg = "you hear the a breeze from one of the nearby rooms, there is a hole in one of the adjacent rooms";

@@ -17,21 +17,20 @@ namespace Fountain_of_objects
             int width = map.Width;
             Position = new Position(_random.Next(0, height), _random.Next(0, width));
 
-            while (Position == player.StartingPosition ||
-                map.Grid.GetRoom(Position).GetType() == typeof(Fountain))
+            while (Position == player.StartingPosition 
+                || map.Grid.GetRoom(Position).GetType() == typeof(Fountain))
             {
                 Position.UpDown = (_random.Next(0, height));
                 Position.RightLeft = (_random.Next(0, width));
             }
         }
         public void Move(Gridmap map)
-
         {
             int height = map.Height;
             int width = map.Width;
             map.Grid.GetRoom(Position).ContainsAmarok = false;
 
-            Position movement = new Position(0, 0);
+            Position movement = new (0, 0);
             while (true)
             {
                 int key = _random.Next(0, 4);
@@ -63,8 +62,10 @@ namespace Fountain_of_objects
                                                Position.RightLeft + movement.RightLeft);
 
                 if (newPos.UpDown < 0 || newPos.UpDown >= height ||
-                    newPos.RightLeft < 0 || newPos.RightLeft >= width)
+                    newPos.RightLeft < 0 || newPos.RightLeft >= width
+                    )
                 {
+
                     movement.UpDown = 0;
                     movement.RightLeft = 0;
                     continue;
@@ -75,14 +76,7 @@ namespace Fountain_of_objects
                     Position = newPos;
                     break;
                 }
-
             }
-        }
-
-        public static string WarningMessage()
-        {
-            string msg = "you smell the foul stench of the Amarok, there is an Amarok in one of the adjacent rooms";
-            return msg;
         }
     }
 }

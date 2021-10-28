@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fountain_of_objects
 {
@@ -13,7 +9,6 @@ namespace Fountain_of_objects
             Message = "Maelstrom";
             IsOccupied = true;
         }
-
         public override bool EnterRoom(Gridmap map, Player player)
         {
             IsRevealed = true;
@@ -31,16 +26,13 @@ namespace Fountain_of_objects
                 Console.WriteLine(" you leave the vortex to someone braver," +
                     " and continue your aimlesswandering though the labyrinth");
             }
-
             return false;
         }
-
         public string WarningMessage()
         {
             string msg = "you sense Immense magical power, There is a Maelstrom in one of the adjacent rooms";
                 return msg;
         }
-
         private Position MaelstromPortal(Gridmap map)
         {
             Position playerposition = supportclass.determineposition(map);

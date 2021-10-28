@@ -15,7 +15,7 @@ namespace Fountain_of_objects
             IsOccupied = true;
         }
         /// <summary>
-        /// checks if player wants to active the portal, if the player accepts the game closes
+        /// checks if player wants to activate the portal, if the player accepts the game closes
         /// </summary>
         /// <param name="map"></param>
         /// <param name="player"></param>
