@@ -22,6 +22,15 @@ namespace Fountain_of_objects
         /// create the map and places objects on the map. 
         /// </summary>
         /// <param name="player"></param>
+        public Gridmap(int height, int width)
+        {
+            Height = height;
+            Width = width;
+            _numberOfHoles = (int)(height * 0.25);
+            _numberOfFountains = 1;
+            _numberOfMaelstroms = (int)(height * 0.1);
+            _numberOfAmaroks = (int)(Height * 0.7);
+        }
         public void ResetMap(Player player)
         {
             CreateGrid();

@@ -8,7 +8,7 @@ namespace Fountain_of_objects
         {
             
             Player player = new();
-            Gridmap map = new();
+            Gridmap map = new(5,5);
             map.ResetMap(player);
             Amarok amarok = new (map, player);
             Console.WriteLine("welcome to the labyrinth of the fountain.\n\nyou play the game by walking around in the maze looking for the fountain. " +
