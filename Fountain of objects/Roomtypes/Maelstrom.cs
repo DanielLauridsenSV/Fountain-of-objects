@@ -35,8 +35,14 @@ namespace Fountain_of_objects
         }
         private Position MaelstromPortal(Gridmap map)
         {
-            Position playerposition = supportclass.determineposition(map);
-            return playerposition;
+            Random random = new Random();
+            Position location = new Position(random.Next(0, map.Height), random.Next(0, map.Width));
+            while (map.Grid.GetRoom(location).IsOccupied|| map.Grid.GetRoom(location).ContainsAmarok)
+            {
+                location.UpDown = random.Next(0, map.Height);
+                location.RightLeft = random.Next(0, map.Width);
+            }
+            return new Position(location);
         }
     }
 }
