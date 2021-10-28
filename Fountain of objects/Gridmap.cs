@@ -83,10 +83,8 @@ namespace Fountain_of_objects
         {
             MakePositionVisible(location);
             string lines = "";
-            for (int i = 0; i < Width; i++)
-            {
-                lines += "______________";
-            }
+            for (int i = 0; i < Width; i++) lines += "______________";
+           
 
             Console.Write($"{lines}\n");
             for (int i = 0; i < Height; i++)
