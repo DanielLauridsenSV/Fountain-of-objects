@@ -5,7 +5,7 @@ namespace Fountain_of_objects
 {
     public class Player
     {
-        public  Position StartingPosition = new(4, 2);
+        public  Position StartingPosition { get; init; }
         public Position Location { get; set; }
         public List<Position> Logger { get; set; }
         public Player(int mapsize)

@@ -24,7 +24,7 @@ namespace Fountain_of_objects
                 Position.RightLeft = (_random.Next(0, width));
             }
         }
-        public void AmarokMovement(Gridmap map)
+        public void Move(Gridmap map)
 
         {
             int height = map.Height;
