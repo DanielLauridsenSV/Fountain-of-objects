@@ -5,21 +5,23 @@ namespace Fountain_of_objects
     /// <summary>
     ///  the Amarok is a wandering Enemy, it works like the player class and is not a roomtype. If the player encounters the Amarok the game is over,
     /// </summary>
-    public class Amarok : IDanger
+    public class Amarok
     {
         public Position Position { get; set; }
-        public string Message = " you smeel the stench of the Amarok in the room, It attacks you from the shadows and eat you";
+        public static string Message = " you smeel the stench of the Amarok in the room, It attacks you from the shadows and eat you";
 
         private Random _random = new Random();
         public Amarok(Gridmap map, Player player)
         {
-            Position = new Position(_random.Next(0, map.Height), _random.Next(0, map.Width));
+            int height = map.Height;
+            int width = map.Width;
+            Position = new Position(_random.Next(0, height), _random.Next(0, width));
 
             while (Position == player.StartingPosition ||
                 map.Grid.GetRoom(Position).GetType() == typeof(Fountain))
             {
-                Position.UpDown = (_random.Next(0, map.Height));
-                Position.RightLeft = (_random.Next(0, map.Width));
+                Position.UpDown = (_random.Next(0, height));
+                Position.RightLeft = (_random.Next(0, width));
             }
         }
         public void AmarokMovement(Gridmap map)
@@ -77,7 +79,7 @@ namespace Fountain_of_objects
             }
         }
 
-        public string WarningMessage()
+        public static string WarningMessage()
         {
             string msg = "you smell the foul stench of the Amarok, there is an Amarok in one of the adjacent rooms";
             return msg;

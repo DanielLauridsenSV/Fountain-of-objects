@@ -8,8 +8,9 @@ namespace Fountain_of_objects
         public  Position StartingPosition = new(4, 2);
         public Position Location { get; set; }
         public List<Position> Logger { get; set; }
-        public Player()
+        public Player(int mapsize)
         {
+            StartingPosition = new(mapsize - 1, mapsize / 2);
             Location = new(StartingPosition.UpDown, StartingPosition.RightLeft);
             Logger = new();
             Logger.Add(Location);

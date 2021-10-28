@@ -11,6 +11,6 @@ namespace Fountain_of_objects
     /// </summary>
     public interface IDanger
     {
-        public string WarningMessage();
+        public  string WarningMessage();
     }
 }

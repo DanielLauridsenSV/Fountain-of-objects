@@ -10,12 +10,12 @@ namespace Fountain_of_objects
     public class Gridmap
     {
         public RoomsGrid Grid;
-        public int Height { get; set; } = 5;
-        public int Width { get; set; } = 5;
-        private int _numberOfHoles = 6;
-        private int _numberOfFountains = 1;
-        private int _numberOfMaelstroms = 2;
-        public int _numberOfAmaroks = 1;
+        public int Height { get; set; }
+        public int Width { get; set; }
+        private int _numberOfHoles;
+        private int _numberOfFountains;
+        private int _numberOfMaelstroms;
+        public int NumberOfAmaroks { get; set; }
         private Random _rand = new();
 
         /// <summary>
@@ -26,10 +26,10 @@ namespace Fountain_of_objects
         {
             Height = height;
             Width = width;
-            _numberOfHoles = (int)(height * 0.25);
+            _numberOfHoles=(int)(height * 1.2);
             _numberOfFountains = 1;
-            _numberOfMaelstroms = (int)(height * 0.1);
-            _numberOfAmaroks = (int)(Height * 0.7);
+            _numberOfMaelstroms = (int)(height / 2.5);
+            NumberOfAmaroks = (int)(Height * 0.3);
         }
         public void ResetMap(Player player)
         {
@@ -38,14 +38,15 @@ namespace Fountain_of_objects
             Placement(typeof(Fountain), _numberOfFountains);
             Placement(typeof(Hole), _numberOfHoles);
             Placement(typeof(Maelstrom), _numberOfMaelstroms);
+
         }
         /// <summary>
         ///creates the gridmap on which the game is played.
         /// </summary>
         private void CreateGrid()
         {
-            Grid = new RoomsGrid( new Position(Height,Width));
-           
+            Grid = new RoomsGrid(new Position(Height, Width));
+
             for (int i = 0; i < Height; i++)
             {
                 for (int j = 0; j < Width; j++)
@@ -68,10 +69,10 @@ namespace Fountain_of_objects
             {
                 while (Grid.GetRoom(position).IsOccupied)
                 {
-                    position.UpDown = _rand.Next(0, 5);
-                    position.RightLeft = _rand.Next(0, 5);
+                    position.UpDown = _rand.Next(0, Height);
+                    position.RightLeft = _rand.Next(0, Width);
                 }
-                Grid.Addvalue(position, (Room)Activator.CreateInstance(eventType)) ;
+                Grid.Addvalue(position, (Room)Activator.CreateInstance(eventType));
             }
         }
         /// <summary>
@@ -81,13 +82,18 @@ namespace Fountain_of_objects
         public void VisualizeMap(Position location)
         {
             MakePositionVisible(location);
-            string lines = ("______________________________________________________________________");
+            string lines = "";
+            for (int i = 0; i < Width; i++)
+            {
+                lines += "______________";
+            }
+
             Console.Write($"{lines}\n");
             for (int i = 0; i < Height; i++)
             {
                 for (int j = 0; j < Width; j++)
                 {
-                    if (Grid.GetRoom(new Position(i,j)).IsRevealed == true)
+                    if (Grid.GetRoom(new Position(i, j)).IsRevealed == true)
                     {
                         if (location.UpDown == i && location.RightLeft == j)
                         {
@@ -98,7 +104,7 @@ namespace Fountain_of_objects
                         }
                         else
                         {
-                            Console.Write($"{Grid.GetRoom(new Position(i,j)).Message,-13}|");
+                            Console.Write($"{Grid.GetRoom(new Position(i, j)).Message,-13}|");
                         }
                     }
                     else
@@ -116,7 +122,7 @@ namespace Fountain_of_objects
         /// </summary>
         /// <param name="playerposition"></param>
         /// <param name="Amarok"></param>
-        public void SenseDanger(Position playerposition, Amarok Amarok)
+        public void SenseDanger(Position playerposition)
         {
             int width = Width;
             int height = Height;
@@ -170,7 +176,7 @@ namespace Fountain_of_objects
         private void CreateEntrypoint(Position location)
         {
             Grid.Addvalue(location, new Entryroom());
-        
+
         }
         //}
 
