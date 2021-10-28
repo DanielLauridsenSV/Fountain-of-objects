@@ -28,8 +28,8 @@ namespace Fountain_of_objects
             {
                 FountainActivated = true;
                 Console.WriteLine("you press the button and the fountain lights up. you know the fountain have been activated");
-                Console.WriteLine("you leave the labyrinth content. You found what you set out to do and was victorious against the labyrinth");
-                supportclass.Sleep(1000);
+                Console.WriteLine("you leave the labyrinth content. You found what you were looking for and was victorious against the labyrinth");
+                SupportClass.Sleep(1000);
                 return true;
             }
             return false;

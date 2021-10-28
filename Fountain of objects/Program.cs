@@ -8,7 +8,7 @@ namespace Fountain_of_objects
         static void Main(string[] args)
         {
             Console.WriteLine("chose how big you want the map to be\n1. 4x4\n2. 6x6\n3. 8x8");
-            Gridmap map = supportclass.Choosemap();
+            Gridmap map = SupportClass.Choosemap();
             Player player = new(map.Width);
             List<Amarok> Amaroklist = new List<Amarok>();
             map.ResetMap(player);
@@ -47,9 +47,9 @@ namespace Fountain_of_objects
                 {
                     amarok.Move(map);
                 }
-                supportclass.Sleep();
+                SupportClass.Sleep();
             }
-            supportclass.Sleep();
+            SupportClass.Sleep();
         }
 
     }
