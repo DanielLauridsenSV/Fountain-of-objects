@@ -3,12 +3,12 @@ using System.Threading;
 
 namespace Fountain_of_objects
 {
-    static class supportclass
+    static class SupportClass
     {
         /// <summary>
         /// used instead of console.Readkey() to make play more intuitive
         /// </summary>
-        public static void Sleep( int time =230)
+        public static void Sleep(int time = 230)
         {
             string dots = (".....");
             for (int i = 0; i < dots.Length; i++)
@@ -17,17 +17,27 @@ namespace Fountain_of_objects
                 Thread.Sleep(time);
             }
         }
-        public static Position determineposition(Gridmap map)
+        public static Gridmap Choosemap()
         {
-            Random random = new Random();
-            int dimension1 = random.Next(0, map.Height);
-            int dimension2 = random.Next(0, map.Width);
-            while (map.Grid[dimension1, dimension2].IsOccupied)
+            switch (Console.ReadLine())
             {
-                dimension1 = random.Next(0, map.Height);
-                dimension2 = random.Next(0, map.Width);
+                case "1":
+                    {
+                        return new Gridmap(4, 4);
+                    }
+                case "2":
+                    {
+                        return new Gridmap(6, 6);
+                    }
+                case "3":
+                    {
+                        return new Gridmap(8, 8);
+                    }
+                default:
+                    {
+                        return new Gridmap(4, 4);
+                    }
             }
-            return new Position(dimension1, dimension2);
         }
     }
 }

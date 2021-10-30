@@ -8,10 +8,10 @@
         public int UpDown { get; set; }
         public int RightLeft { get; set; }
 
-        public Position(int updownvalue, int rightleftvalue)
+        public Position(int updownValue, int rightLeftValue)
         {
-            UpDown = updownvalue;
-            RightLeft = rightleftvalue;
+            UpDown = updownValue;
+            RightLeft = rightLeftValue;
         }
         public Position(Position position)
         {
